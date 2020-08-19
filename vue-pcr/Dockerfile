@@ -1,6 +1,5 @@
 ## 选node作为基础镜像
-FROM node:latest \
-&&nginx:latest
+FROM node:latest 
 ##换源安装vuecli
 RUN \
 npm install -g @vue/cli \
