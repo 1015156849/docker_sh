@@ -9,7 +9,7 @@ RUN mkdir /data
 ## 指定工作目录
 WORKDIR /data
 RUN git clone https://github.com/CJowo/pcr-guild-vue.git 
-WORKDIR /pcr-guild-vue
+WORKDIR /data/pcr-guild-vue
 RUN npm install
 RUN quasar build
 
