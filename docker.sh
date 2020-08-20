@@ -20,7 +20,6 @@ case "$code" in
 1)
     echo -e "${YELLOW}->>开始执行nginx部署命令。。。${RES}"
     {
-        docker stop nginx-test
         mkdir -p ~/data/nginx/{conf,conf.d,html,log}
         cp ~/docker_sh/nginx/nginx.conf ~/data/nginx/conf/
         docker run -d -p 8080:80 --name nginx-test -v ~/data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v ~/data/nginx/log:/var/log/nginx -v ~/data/nginx/html:/usr/share/nginx/html nginx
@@ -34,8 +33,6 @@ case "$code" in
 3)
 	echo -e "${YELLOW}->>开始执行nginx部署命令。。。${RES}"
     clear
-    echo -e "${YELLOW}关闭已启动的vue-pcr镜像${RES}"
-    source docker stop vuepcr
     echo -e "${YELLOW}启动vue-pcr镜像${RES}"
     source docker run -itd --name vuepcr vuepcr:1.0 
     echo -e "${YELLOW}启动nginx镜像并挂在vuepcr${RES}"
