@@ -1,12 +1,18 @@
 #!/bin/bash
 clear
-# 定义颜色变量，\033、\e、\E是等价的，都是转义起始符
-RED='\e[1;31m'  # 红
-GREEN='\e[1;32m'  # 绿
-YELLOW='\033[1;33m'  # 黄
-BLUE='\E[1;34m'  # 蓝
-PINK='\E[1;35m'  # 粉红
-RES='\033[0m'  # 清除颜色
+# 定义颜色变量
+RED='\e[1;31m' # 红
+GREEN='\e[1;32m' # 绿
+YELLOW='\e[1;33m' # 黄
+BLUE='\e[1;34m' # 蓝
+PINK='\e[1;35m' # 粉红
+RES='\e[0m' # 清除颜色
+​
+echo -e "${RED}Red${RES}"
+echo -e "${GREEN}Green${RES}"
+echo -e "${YELLOW}Yellow${RES}"
+echo -e "${BLUE}Blue${RES}"
+echo -e "${PINK}Pink${RES}"
 
 echo -e "${GREEN} docker管理脚本 ${GREEN}"
 echo -e "${GREEN} 【1】启动nginx并挂载vue-pcr dist目录 ${GREEN}"
