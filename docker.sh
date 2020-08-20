@@ -22,7 +22,8 @@ case "$code" in
     {
         mkdir -p ~/data/nginx/{conf,conf.d,html,log}
         cp ~/docker_sh/nginx/nginx.conf ~/data/nginx/conf/
-        cp ~/docker_sh/nginx/*.html ~/data/nginx/html
+        cp ~/docker_sh/nginx/index.html ~/data/nginx/html
+        cp ~/docker_sh/nginx/50x.html ~/data/nginx/html
         docker run -d -p 8080:80 --name nginx -v ~/data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v ~/data/nginx/log:/var/log/nginx -v ~/data/nginx/html:/usr/share/nginx/html nginx
     }
 ;;
