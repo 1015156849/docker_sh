@@ -34,7 +34,10 @@ case "$code" in
 ;;
 2)
     echo -e "${YELLOW}->>开始重启nginx。。。${RES}"
-    source docker restart nginx
+    {
+        cp ~/docker_sh/nginx/nginx.conf ~/data/nginx/conf/
+        docker restart nginx
+    }
     echo -e "${BLUE}重启nginx完成${RES}"
 ;;
 3)
