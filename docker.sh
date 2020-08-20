@@ -34,7 +34,9 @@ case "$code" in
 	echo -e "${YELLOW}->>开始执行nginx部署命令。。。${RES}"
     clear
     echo -e "${YELLOW}启动vue-pcr镜像${RES}"
-    source docker run -itd --name vuepcr -v ~/data/nginx/html/vuepcr:/data/pcr-guild-vue/dist vuepcr:1.0 
+    {
+        docker run -itd --name vuepcr -v ~/data/nginx/html/vuepcr:/data/pcr-guild-vue/dist vuepcr:1.0 
+    } 
     echo -e "${YELLOW}启动nginx镜像并挂在vuepcr${RES}"
 ;;
 0)
