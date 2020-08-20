@@ -1,5 +1,6 @@
 #!/bin/bash
-echo "docker管理脚本"
+printf "\033c"
+echo -e "\e[33m docker管理脚本"
 echo "【1】启动nginx并挂载vue-pcr dist目录"
 echo
 echo
