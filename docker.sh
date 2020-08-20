@@ -11,8 +11,7 @@ RES='\e[0m' # 清除颜色
 echo -e "${GREEN} docker管理脚本--------------- ${RES}"
 echo -e "${GREEN} 【1】安装nginx镜像并创建宿主机配置文件目录和配置文件【自动导入pcr-guild-vue】${RES}"
 echo -e "${GREEN} 【2】重启nginx${RES}"
-echo -e "${GREEN} 【3】启动nginx并挂载vue-pcr dist目录${RES}"
-echo -e "${GREEN} 【3】退出 ${RES}"
+echo -e "${GREEN} 【3】启动pcr-guild 后台${RES}"
 echo -e "${GREEN} 【0】退出 ${RES}"
 echo -e "${GREEN} 请输入序号----------- ${RES}"
 read code
@@ -41,6 +40,14 @@ case "$code" in
     echo -e "${BLUE}重启nginx完成${RES}"
 ;;
 3)
+    echo -e "${YELLOW}->>开始执行pcr-guild 后台服务 命令。。。${RES}"
+    clear
+    echo -e "${YELLOW}启动pcr-guild 后台服务镜像${RES}"
+    {
+        docker run -itd -p 8081:80 --name vuepcr-server vuepcrserver:1.0 
+    }
+;;
+5)
 	echo -e "${YELLOW}->>开始执行nginx部署命令。。。${RES}"
     clear
     echo -e "${YELLOW}启动vue-pcr镜像${RES}"
