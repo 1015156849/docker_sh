@@ -1,16 +1,24 @@
 #!/bin/bash
-printf "\033c"
-echo -e "\e[33m docker管理脚本"
-echo "【1】启动nginx并挂载vue-pcr dist目录"
+clear
+# 定义颜色变量，\033、\e、\E是等价的，都是转义起始符
+RED='\e[1;31m'  # 红
+GREEN='\e[1;32m'  # 绿
+YELLOW='\033[1;33m'  # 黄
+BLUE='\E[1;34m'  # 蓝
+PINK='\E[1;35m'  # 粉红
+RES='\033[0m'  # 清除颜色
+
+echo -e "${GREEN} docker管理脚本 ${GREEN}"
+echo -e "${GREEN} 【1】启动nginx并挂载vue-pcr dist目录 ${GREEN}"
 echo
 echo
-echo "【其他任意字符退出】"
-echo "---------------------请输入序号------------------------"
+echo -e "${GREEN}【其他任意字符退出】${GREEN}"
+echo -e "${GREEN}---------------------请输入序号------------------------${GREEN}"
 read code
 
 if [[ $code -eq 1 ]]
 then
-	echo "开始执行nginx部署命令。。。"
+	echo -e "${GREEN}开始执行nginx部署命令。。。${GREEN}"
 else
-	echo "退出脚本"
+	echo -e "${GREEN}退出脚本${GREEN}"
 fi
