@@ -43,3 +43,6 @@ case "$code" in
 0)
 	echo -e "${GREEN}退出脚本${RES}"
     exit;
+;;
+*)
+;;
