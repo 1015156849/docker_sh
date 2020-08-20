@@ -10,8 +10,6 @@ RES='\e[0m' # 清除颜色
 # 开始脚本
 echo -e "${GREEN}------------------docker管理脚本----------------------${RES}"
 echo -e "${GREEN}----【1】启动nginx并挂载vue-pcr dist目录 ${RES}"
-echo
-echo
 echo -e "${GREEN}----【其他任意字符退出】${RES}"
 echo -e "${GREEN}---------------------请输入序号------------------------${RES}"
 read code
