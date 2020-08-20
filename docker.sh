@@ -22,3 +22,4 @@ then
 else
 	echo -e "${GREEN}退出脚本${GREEN}"
 fi
+echo -e "${RES}${RES}"
