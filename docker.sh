@@ -9,7 +9,7 @@ PINK='\e[1;35m' # 粉红
 RES='\e[0m' # 清除颜色
 # 开始脚本
 echo -e "${GREEN} docker管理脚本--------------- ${RES}"
-echo -e "${GREEN} 【1】安装nginx镜像并创建宿主机配置文件目录和配置文件${RES}"
+echo -e "${GREEN} 【1】安装nginx镜像并创建宿主机配置文件目录和配置文件【自动导入pcr-guild-vue】${RES}"
 echo -e "${GREEN} 【2】重启nginx${RES}"
 echo -e "${GREEN} 【3】启动nginx并挂载vue-pcr dist目录${RES}"
 echo -e "${GREEN} 【3】退出 ${RES}"
@@ -24,12 +24,17 @@ case "$code" in
         cp ~/docker_sh/nginx/nginx.conf ~/data/nginx/conf/
         cp ~/docker_sh/nginx/index.html ~/data/nginx/html
         cp ~/docker_sh/nginx/50x.html ~/data/nginx/html
+        mkdir -p ~/data/nginx/html/vuepcr
+        cd ~/data/nginx/html/vuepcr 
+        wget -c https://github.com/CJowo/pcr-guild-vue/releases/download/0.2.1/dist.zip
+        unzip dist.zip
+        rm dist.zip
         docker run -d -p 8080:80 --name nginx -v ~/data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v ~/data/nginx/log:/var/log/nginx -v ~/data/nginx/html:/usr/share/nginx/html nginx
     }
 ;;
 2)
     echo -e "${YELLOW}->>开始重启nginx。。。${RES}"
-    source docker restart nginx-test
+    source docker restart nginx
     echo -e "${BLUE}重启nginx完成${RES}"
 ;;
 3)
