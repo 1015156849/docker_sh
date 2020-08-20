@@ -7,12 +7,6 @@ YELLOW='\e[1;33m' # 黄
 BLUE='\e[1;34m' # 蓝
 PINK='\e[1;35m' # 粉红
 RES='\e[0m' # 清除颜色
-​
-echo -e "${RED}Red${RES}"
-echo -e "${GREEN}Green${RES}"
-echo -e "${YELLOW}Yellow${RES}"
-echo -e "${BLUE}Blue${RES}"
-echo -e "${PINK}Pink${RES}"
 
 echo -e "${GREEN} docker管理脚本 ${GREEN}"
 echo -e "${GREEN} 【1】启动nginx并挂载vue-pcr dist目录 ${GREEN}"
