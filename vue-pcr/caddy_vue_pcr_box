@@ -1,6 +1,5 @@
 box.pcr.galibang.cn {
     gzip
-    timeouts none
-    root /var/www/html/vuepcr
+    root /etc/caddy/www 
     index index.html
 }

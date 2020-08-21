@@ -10,8 +10,8 @@ RES='\e[0m' # 清除颜色
 # 开始脚本
 echo -e "${YELLOW}->>开始执行 部署pcr_box网站前台脚本${RES}"
 {
-        mkdir -p /var/www/html/vuepcr
-        cd /var/www/html/vuepcr 
+        mkdir -p /etc/caddy/www/vuepcr
+        cd /etc/caddy/www/vuepcr 
         wget -c https://github.com/CJowo/pcr-guild-vue/releases/download/0.2.1/dist.zip
         unzip dist.zip
         rm dist.zip
