@@ -21,17 +21,20 @@ case "$code" in
         cp ~/docker_sh/caddy_docker /etc/caddy/sites
         service caddy reload
     }
+    echo -e "${GREEN}->>执行完毕${RES}"
 ;;
 2)
     echo -e "${YELLOW}->>开始执行 部署pcr_box网站前台 命令${RES}"
     {
+        chmod +x ./vue-pcr/vue-pcr.sh
         ./vue-pcr/vue-pcr.sh
     }
 ;;
 3)
     echo -e "${YELLOW}->>开始执行 部署pcr_box网站后台到docker并启动 命令${RES}"
     {
-        ./vue-pcr-server/vue-pcr-server.sh
+       chmod +x ./vue-pcr-server/vue-pcr-server.sh
+       ./vue-pcr-server/vue-pcr-server.sh
     }
 ;;
 *)
