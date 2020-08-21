@@ -12,7 +12,7 @@ echo -e "${YELLOW}->>开始执行部署Caddy配置并启动vuepcrserver服务 �
 {
         docker stop pcrbox
         docker rm pcrbox
-        docker run -itd -p 8081:80 --name pcrbox pcrguild/django:latest
+        docker run -itd -p 8888:80 --name pcrbox pcrguild/django:latest
         cp ~/docker_sh/vue-pcr-server/caddy_vue_pcr_box_server /etc/caddy/sites
         service caddy reload
 }
