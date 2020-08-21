@@ -3,7 +3,7 @@ box.pcr.galibang.cn {
     root /etc/caddy/www/vuepcr
     index index.html
 
-    proxy /api box.pcr.galibang.cn:8081 {
+    proxy /api localhost:8081 {
         transparent
     }
     header /api {
