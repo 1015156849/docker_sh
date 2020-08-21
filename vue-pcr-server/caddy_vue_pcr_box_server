@@ -1,5 +1,7 @@
 box.pcr.galibang.cn {
 gzip
 timeouts none
-proxy /api 127.0.0.1:8081
+proxy /api 127.0.0.1:8081 {
+    transparent
+    }
 }
