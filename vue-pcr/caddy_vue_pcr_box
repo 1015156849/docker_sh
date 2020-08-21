@@ -1,0 +1,6 @@
+box.pcr.galibang.cn {
+    gzip
+    timeouts none
+    root /var/www/html/vuepcr
+    index index.html
+}
