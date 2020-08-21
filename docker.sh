@@ -9,18 +9,30 @@ PINK='\e[1;35m' # 粉红
 RES='\e[0m' # 清除颜色
 # 开始脚本
 echo -e "${GREEN} docker管理脚本--------------- ${RES}"
-echo -e "${GREEN} 【1】部署pcr_box网站前台${RES}"
-echo -e "${GREEN} 【2】部署pcr_box网站后台到docker并启动${RES}"
+echo -e "${GREEN} 【1】注册dockerManager${RES}"
+echo -e "${GREEN} 【2】部署pcr_box网站前台${RES}"
+echo -e "${GREEN} 【3】部署pcr_box网站后台到docker并启动${RES}"
 echo -e "${GREEN} 请输入序号----------- ${RES}"
 read code
 case "$code" in
 1)
+    echo -e "${YELLOW}->>开始执行 注册dockerManager 命令${RES}"
+    {
+        cp ~/docker_sh/caddy_docker /etc/caddy/sites
+        service caddy reload
+    }
+;;
+2)
     echo -e "${YELLOW}->>开始执行 部署pcr_box网站前台 命令${RES}"
-    source ./vue-pcr/vue-pcr.sh
+    {
+        ./vue-pcr/vue-pcr.sh
+    }
 ;;
 3)
     echo -e "${YELLOW}->>开始执行 部署pcr_box网站后台到docker并启动 命令${RES}"
-    source ./vue-pcr-server/vue-pcr-server.sh
+    {
+        ./vue-pcr-server/vue-pcr-server.sh
+    }
 ;;
 *)
 echo -e "${GREEN}退出脚本${RES}"
