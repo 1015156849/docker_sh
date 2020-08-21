@@ -1,5 +1,10 @@
 box.pcr.galibang.cn {
-    proxy /api 127.0.0.1:8081 {
+    proxy /api 0.0.0.0:8081 {
         transparent
+        header /api {
+            Access-Control-Allow-Origin  *
+            Access-Control-Allow-Methods "GET, POST, OPTIONS"
+            -Server
+        }
     }
 }
