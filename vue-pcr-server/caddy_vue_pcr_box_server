@@ -2,9 +2,4 @@ box.pcr.galibang.cn {
 gzip
 timeouts none
 proxy /api 127.0.0.1:8081
-    header / {
-    Access-Control-Allow-Origin *
-    Access-Control-Allow-Methods "GET, POST, OPTIONS"
-    -Server
-    }
 }
