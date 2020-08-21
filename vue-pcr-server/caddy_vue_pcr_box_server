@@ -6,11 +6,26 @@ box.pcr.galibang.cn {
         regexp .*
         to {path} /
     }
-    proxy /api 0.0.0.0:8081 {
+    proxy /api api.box.pcr.galibang.cn {
         transparent
         
     }
     header /api {
+            Access-Control-Allow-Credentials：true
+            Access-control-allow-headers：*
+            Access-Control-Allow-Origin  *
+            Access-Control-Allow-Methods "GET, POST, OPTIONS"
+            -Server
+    }
+}
+
+api.box.pcr.galibang.cn {
+    gzip
+    proxy / 0.0.0.0:8081 {
+        transparent
+        
+    }
+    header / {
             Access-Control-Allow-Credentials：true
             Access-control-allow-headers：*
             Access-Control-Allow-Origin  *
