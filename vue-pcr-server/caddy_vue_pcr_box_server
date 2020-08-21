@@ -3,14 +3,13 @@ box.pcr.galibang.cn {
     root /etc/caddy/www/vuepcr
     index index.html
 
-    proxy /api 0.0.0.0:8081 {
+    proxy /api box.pcr.galibang.cn:8081 {
         transparent
-        
     }
     header /api {
-            Access-Control-Allow-Credentials：true
             Access-control-allow-headers：*
             Access-Control-Allow-Origin  *
             Access-Control-Allow-Methods "GET, POST, OPTIONS"
+            -Server
     }
 }
