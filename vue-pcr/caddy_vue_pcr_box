@@ -1,5 +1,5 @@
 box.pcr.galibang.cn {
     gzip
-    root * /etc/caddy/www/vuepcr
-    file_server
+    root /etc/caddy/www/vuepcr
+    index index.html
 }
