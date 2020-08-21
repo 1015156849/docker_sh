@@ -16,15 +16,11 @@ read code
 case "$code" in
 1)
     echo -e "${YELLOW}->>开始执行 部署pcr_box网站前台 命令${RES}"
-    {
-        ./vue-pcr/vue-pcr.sh
-    }
+    fork ./vue-pcr/vue-pcr.sh
 ;;
 3)
     echo -e "${YELLOW}->>开始执行 部署pcr_box网站后台到docker并启动 命令${RES}"
-    {
-        ./vue-pcr-server/vue-pcr-server.sh
-    }
+    fork ./vue-pcr-server/vue-pcr-server.sh
 ;;
 *)
 echo -e "${GREEN}退出脚本${RES}"
