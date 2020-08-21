@@ -3,13 +3,7 @@ box.pcr.galibang.cn {
     root /etc/caddy/www/vuepcr
     index index.html
 
-    proxy /api localhost:8081 {
+    proxy /api 127.0.0.1:8081 {
         transparent
-    }
-    header /api {
-            Access-control-allow-headers：*
-            Access-Control-Allow-Origin  *
-            Access-Control-Allow-Methods "GET, POST, OPTIONS"
-            -Server
     }
 }
