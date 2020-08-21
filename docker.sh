@@ -28,6 +28,7 @@ case "$code" in
     {
         chmod +x ./vue-pcr/vue-pcr.sh
         ./vue-pcr/vue-pcr.sh
+        chmod -x ./vue-pcr/vue-pcr.sh
     }
 ;;
 3)
@@ -35,9 +36,11 @@ case "$code" in
     {
        chmod +x ./vue-pcr-server/vue-pcr-server.sh
        ./vue-pcr-server/vue-pcr-server.sh
+       chmod -x ./vue-pcr-server/vue-pcr-server.sh
     }
 ;;
 *)
 echo -e "${GREEN}退出脚本${RES}"
 ;;
 esac
+chmod -x ./docker.sh
