@@ -4,6 +4,7 @@ box.pcr.galibang.cn {
     gzip
     root /etc/caddy/www/vuepcr
     index index.html
+    proxy /bd www.google.co.jp
     #proxy /api 127.0.0.1:8081{
     #    transparent
     #}
@@ -16,10 +17,4 @@ api.box.pcr.galibang.cn {
     auto_https false
     gzip
     proxy / 127.0.0.1:8081
-}
-
-box.pcr.galibang.cn/bd/ {
-    auto_https false
-    gzip
-    proxy / www.google.co.jp
 }
