@@ -2,12 +2,9 @@ box.pcr.galibang.cn {
     gzip
     root /etc/caddy/www/vuepcr
     index index.html
-    #proxy / 0.0.0.0:8888 
+    proxy /api http://127.0.0.1:8081 
     rewrite {
          regexp .*
         to {path} /
     }
-}
-api.box.pcr.galibang.cn {
-   proxy / 127.0.0.1:8081  
 }
