@@ -4,8 +4,11 @@ box.pcr.galibang.cn {
     gzip
     root /etc/caddy/www/vuepcr
     index index.html
-    proxy / 127.0.0.1:8081{
-        transparent
+    proxy /api 119.28.91.112:8081{
+        header_upstream Host {host}
+        header_upstream X-Real-IP {remote}
+        header_upstream X-Forwarded-For {remote}
+        header_upstream X-Forwarded-Proto {scheme}
     }
     #rewrite / {
     #   regexp .*
