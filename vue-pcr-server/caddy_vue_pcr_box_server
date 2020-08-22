@@ -1,4 +1,5 @@
 box.pcr.galibang.cn {
+    auto_https false
     gzip
     root /etc/caddy/www/vuepcr
     index index.html
@@ -8,6 +9,7 @@ box.pcr.galibang.cn {
     }
 }
 api.box.pcr.galibang.cn {
+    auto_https false
     gzip
     proxy / 127.0.0.1:8081
 }
