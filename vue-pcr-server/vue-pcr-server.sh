@@ -15,5 +15,6 @@ echo -e "${YELLOW}->>开始执行部署Caddy配置并启动vuepcrserver服务 �
         docker run -itd -p 8081:80 --name vuepcrserver vuepcrserver:1.0
         cp ~/docker_sh/vue-pcr-server/caddy_vue_pcr_box_server /etc/caddy/sites
         service caddy reload
+
 }
 echo -e "${GREEN}->>部署完毕${RES}"
