@@ -8,3 +8,6 @@ box.pcr.galibang.cn {
         to {path} /
     }
 }
+api.box.pcr.galibang.cn {
+   proxy / 127.0.0.1:8081  
+}
