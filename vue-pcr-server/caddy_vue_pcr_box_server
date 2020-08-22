@@ -1,11 +1,10 @@
 box.pcr.galibang.cn {
-    auto_https off
     gzip
     root /etc/caddy/www/vuepcr
     index index.html
     proxy /api 127.0.0.1:8081
     rewrite {
-         regexp .*
+        regexp .*
         to {path} /
     }
 }
