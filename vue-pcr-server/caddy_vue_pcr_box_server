@@ -10,10 +10,10 @@ box.pcr.galibang.cn {
         header_upstream X-Forwarded-For {remote}
         header_upstream X-Forwarded-Proto {scheme}
     }
-    #rewrite / {
-    #   regexp .*
-    #    to {path}/
-    #}
+    rewrite /api {
+        regexp .*
+        to 119.28.91.112:8081{path}/
+    }
 }
 api.box.pcr.galibang.cn {
     auto_https false
