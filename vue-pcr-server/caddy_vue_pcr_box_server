@@ -1,18 +1,9 @@
 #caddy想要访问该文件夹，必须修改 system 下的caddy.server 把用户和组改成 root 然后重新启动Caddy
-#box.pcr.galibang.cn {
-#    auto_https false
-#    gzip
-#    root /etc/caddy/www/vuepcr
-#    index index.html
-#    proxy / tempestissimo.cc:8777{
-#    }
-#}
 box.pcr.galibang.cn {
     auto_https false
     gzip
-    proxy / tempestissimo.cc:8777{
-
-    }
+    root /etc/caddy/www/vuepcr
+    index index.html
 }
 api.box.pcr.galibang.cn {
     auto_https false
