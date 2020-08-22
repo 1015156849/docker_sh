@@ -1,5 +1,5 @@
 box.pcr.galibang.cn {
-    disable false
+    auto_https off
     gzip
     root /etc/caddy/www/vuepcr
     index index.html
