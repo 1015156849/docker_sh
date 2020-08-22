@@ -6,4 +6,4 @@ WORKDIR /data/pcr-guild-django
 RUN pip install -r requirements.txt
 RUN python manage.py migrate
 EXPOSE 80
-RUN python manage.py runserver 0.0.0.0:80
+CMD python manage.py runserver 0.0.0.0:80
