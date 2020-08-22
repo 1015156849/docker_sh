@@ -4,12 +4,9 @@ box.pcr.galibang.cn {
     gzip
     root /etc/caddy/www/vuepcr
     index index.html
-    redir 200  {
-        /bd www.google.co.jp
+    proxy / 127.0.0.1:8081{
+        transparent
     }
-    #proxy /api 127.0.0.1:8081{
-    #    transparent
-    #}
     #rewrite / {
     #   regexp .*
     #    to {path}/
