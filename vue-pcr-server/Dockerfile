@@ -9,4 +9,4 @@ RUN pip install django-werkzeug-debugger-runserver
 RUN pip install pyOpenSSL
 RUN python manage.py migrate
 EXPOSE 80
-CMD ["/bin/bash","python manage.py runserver_plus --cert server.crt 0.0.0.0:80"]
+CMD python manage.py runserver_plus --cert server.crt 0.0.0.0:80
