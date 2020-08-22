@@ -12,6 +12,7 @@ echo -e "${GREEN} docker管理脚本--------------- ${RES}"
 echo -e "${GREEN} 【1】注册dockerManager${RES}"
 echo -e "${GREEN} 【2】部署pcr_box网站前台${RES}"
 echo -e "${GREEN} 【3】部署pcr_box网站后台到docker并启动${RES}"
+echo -e "${GREEN} 【4】部署pcr_box caddy ${RES}"
 echo -e "${GREEN} 请输入序号----------- ${RES}"
 read code
 case "$code" in
@@ -37,6 +38,13 @@ case "$code" in
        chmod +x ./vue-pcr-server/vue-pcr-server.sh
        ./vue-pcr-server/vue-pcr-server.sh
        chmod -x ./vue-pcr-server/vue-pcr-server.sh
+    }
+;;
+4)
+    echo -e "${YELLOW}->>开始执行 部署pcr_box caddy 命令${RES}"
+    {
+        cp ~/docker_sh/vue-pcr-server/caddy_vue_pcr_box_server /etc/caddy/sites
+        service caddy reload
     }
 ;;
 *)
