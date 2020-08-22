@@ -3,9 +3,10 @@ box.pcr.galibang.cn {
     gzip
     root /etc/caddy/www/vuepcr
     index index.html
+    proxy /api api.box.pcr.galibang.cn
     rewrite /api {
         regexp .*
-        to api.box.pcr.galibang.cn/
+        to {path}/
     }
 }
 api.box.pcr.galibang.cn {
