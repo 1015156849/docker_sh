@@ -36,7 +36,7 @@ case "$code" in
 3)
     echo -e "${YELLOW}->>开始执行 重新Build pcr_box网站后台 Docker镜像 命令${RES}"
     {
-        docker rmi vuepcrserver
+        docker rmi vuepcrserver:1.0
         cd ./vue-pcr-server
         docker build -t vuepcrserver:1.0 .
     }
