@@ -4,6 +4,7 @@ box.pcr.galibang.cn {
     gzip
     root /etc/caddy/www/vuepcr
     index index.html
+    
     #header / {
     #        Access-Control-Allow-Credentials：true
     #        Access-control-allow-headers：*
@@ -16,7 +17,7 @@ api.box.pcr.galibang.cn {
     auto_https false
     gzip
     proxy / 127.0.0.1:8081 {
-       transparent
+       #transparent
     }
     #header / {
     #        Access-Control-Allow-Credentials：true
