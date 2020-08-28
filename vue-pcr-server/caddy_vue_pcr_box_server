@@ -11,15 +11,14 @@ box.pcr.galibang.cn {
 }
 api.box.pcr.galibang.cn {
     gzip
-    header /api {
+    proxy / 127.0.0.1:8081 {
+       transparent
+    }
+     header / {
             Access-control-allow-headers：*
             Access-Control-Allow-Origin  *
             Access-Control-Allow-Methods "GET,POST,OPTIONS"
             -Server
     }
-    proxy / 127.0.0.1:8081 {
-       transparent
-    }
-    
 }
 
