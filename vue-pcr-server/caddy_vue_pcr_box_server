@@ -4,19 +4,24 @@ box.pcr.galibang.cn {
     gzip
     root /etc/caddy/www/vuepcr
     index index.html
-}
-http://api.box.pcr.galibang.cn {
-    auto_https false
-    gzip
-    proxy / 127.0.0.1:8081 {
-       transparent
-    }
-    header / {
-            Access-Control-Allow-Credentials：true
+     header /api {
             Access-control-allow-headers：*
             Access-Control-Allow-Origin  *
            Access-Control-Allow-Methods "GET,POST,OPTIONS"
+    }
+}
+api.box.pcr.galibang.cn {
+    auto_https false
+    gzip
+    header /api {
+            Access-control-allow-headers：*
+            Access-Control-Allow-Origin  *
+            Access-Control-Allow-Methods "GET,POST,OPTIONS"
             -Server
     }
+    proxy / 127.0.0.1:8081 {
+       transparent
+    }
+    
 }
 
