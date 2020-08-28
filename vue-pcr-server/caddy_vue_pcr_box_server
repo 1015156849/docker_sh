@@ -4,6 +4,7 @@ box.pcr.galibang.cn {
     root /etc/caddy/www/vuepcr
     index index.html
      header /api {
+            Access-Control-Allow-Credentials：true
             Access-control-allow-headers：*
             Access-Control-Allow-Origin  *
            Access-Control-Allow-Methods "GET,POST,OPTIONS"
@@ -14,7 +15,8 @@ api.box.pcr.galibang.cn {
     proxy / 127.0.0.1:8081 {
        transparent
     }
-     header / {
+    header / {
+            Access-Control-Allow-Credentials：true
             Access-control-allow-headers：*
             Access-Control-Allow-Origin  *
             Access-Control-Allow-Methods "GET,POST,OPTIONS"
