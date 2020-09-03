@@ -7,25 +7,15 @@ box.pcr.galibang.cn {
         regexp .*
         to {path} /
     }
-    header / {
-            Access-Control-Allow-Credentials：true
-            Access-control-allow-headers：*
-            Access-Control-Allow-Origin  *
-            Access-Control-Allow-Methods "GET,POST,OPTIONS"
-            -Server
-    }
 }
-#api.box.pcr.galibang.cn {
-#    gzip
-#    proxy / 127.0.0.1:8081 {
-#       transparent
-#    }
-#    header / {
-#            Access-Control-Allow-Credentials：true
-#            Access-control-allow-headers：*
-#            Access-Control-Allow-Origin  *
-#            Access-Control-Allow-Methods "GET,POST,OPTIONS"
-#            -Server
-#    }
-#}
+https://api.box.pcr.galibang.cn {
+    tls off
+    gzip
+    redir http://api.box.pcr.galibang.cn
+
+}
+http://api.box.pcr.galibang.cn {
+    gzip
+    proxy / 127.0.0.1:8081
+}
 
