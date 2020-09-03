@@ -1,5 +1,9 @@
 #caddy想要访问该文件夹，必须修改 system 下的caddy.server 把用户和组改成 root 然后重新启动Caddy
-box.pcr.galibang.cn {
+
+https://box.pcr.galibang.cn {
+    redir http://box.pcr.galibang.cn
+}
+http://box.pcr.galibang.cn {
     gzip
     root /etc/caddy/www/vuepcr
     index index.html 
@@ -8,10 +12,10 @@ box.pcr.galibang.cn {
         to {path} /
     }
 }
-https://api.box.pcr.galibang.cn {
-    redir http://api.box.pcr.galibang.cn
+https://api.box.pcr.galibang.cn/api {
+    redir http://api.box.pcr.galibang.cn/api
 }
-http://api.box.pcr.galibang.cn {
+http://box.pcr.galibang.cn/api {
     gzip
     proxy / 127.0.0.1:8081 
 }
