@@ -12,8 +12,8 @@ http://box.pcr.galibang.cn {
         to {path} /
     }
 }
-https://api.box.pcr.galibang.cn/api {
-    redir http://api.box.pcr.galibang.cn/api
+https://box.pcr.galibang.cn/api {
+    redir http://box.pcr.galibang.cn/api
 }
 http://box.pcr.galibang.cn/api {
     gzip
