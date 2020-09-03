@@ -7,16 +7,17 @@ http://box.pcr.galibang.cn {
     gzip
     root /etc/caddy/www/vuepcr
     index index.html 
+    proxy /api 127.0.0.1:8081 
     rewrite {
         regexp .*
         to {path} /
     }
 }
-https://box.pcr.galibang.cn/api {
-    redir http://box.pcr.galibang.cn/api
-}
-http://box.pcr.galibang.cn/api {
-    gzip
-    proxy / 127.0.0.1:8081 
-}
+#https://box.pcr.galibang.cn/api {
+#    redir http://box.pcr.galibang.cn/api
+#}
+#http://box.pcr.galibang.cn/api {
+#    gzip
+#    proxy / 127.0.0.1:8081 
+#}
 
