@@ -9,19 +9,10 @@ box.pcr.galibang.cn {
     }
 }
 https://api.box.pcr.galibang.cn {
-    tls off
     redir http://api.box.pcr.galibang.cn
-
 }
 http://api.box.pcr.galibang.cn {
     gzip
     proxy / 127.0.0.1:8081 
-    header / {
-            Access-Control-Allow-Credentials：true
-            Access-control-allow-headers：*
-            Access-Control-Allow-Origin  *
-            Access-Control-Allow-Methods "GET,POST,OPTIONS"
-            -Server
-    }
 }
 
