@@ -10,12 +10,13 @@ box.pcr.galibang.cn {
 }
 https://api.box.pcr.galibang.cn {
     tls off
-    gzip
     redir http://api.box.pcr.galibang.cn
 
 }
 http://api.box.pcr.galibang.cn {
     gzip
-    proxy / 127.0.0.1:8081
+    proxy / 127.0.0.1:8081 {
+       transparent
+    }
 }
 
