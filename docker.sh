@@ -25,7 +25,7 @@ menu_pcrbox=(
     更新 代理配置
 )
 docker(){
-    selectMenu()
+    selectMenu();
 }
 selectMenu(){
     echo 
