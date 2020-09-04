@@ -28,7 +28,7 @@ error() {
 	echo -e "\n$red 输入错误！$none\n"
 }
 
-selectMenu(){
+docker(){
     echo 
     while :; do
             echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menu_main[*]}$none]"
@@ -151,7 +151,4 @@ selectMenu_pcrbox(){
 # echo -e "${GREEN}退出脚本${RES}"
 # ;;
 # esac
-docker(){
-    selectMenu
-}
 chmod -x ./docker.sh
