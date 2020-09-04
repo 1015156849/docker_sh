@@ -28,39 +28,6 @@ error() {
 	echo -e "\n$red 输入错误！$none\n"
 }
 
-    echo 
-    while :; do
-            echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menu_main[*]}$none]"
-            echo
-            for ((i = 1; i <= ${#menu_main[*]}; i++)); do
-                Stream="${menu_main[$i - 1]}"
-                if [[ "$i" -le 9 ]]; then
-                    # echo
-                    echo -e "$yellow  $i. $none${Stream}"
-                else
-                    # echo
-                    echo -e "$yellow $i. $none${Stream}"
-                fi
-            done
-            echo
-            read -p "$(echo -e "(请输入 ${cyan}序号$none)"):" menu_1
-            [ -z "$menu_1" ] && menu_1=1
-            case $menu_1 in
-            [1-9] | [1-2][0-9] | 3[0-2])
-                echo
-                echo
-                echo -e "$yellow 功能 = $cyan${menu_main[$menu_1 - 1]}$none"
-                echo "----------------------------------------------------------------"
-                echo
-                selectMenu_pcrbox
-                break
-                ;;
-            *)
-                error
-                ;;
-            esac
-    done
-
 
 selectMenu_pcrbox(){
     clear
@@ -98,7 +65,44 @@ selectMenu_pcrbox(){
 
 }
 
+selectMenu(){
+    clear
+    echo 
+    while :; do
+            echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menu_main[*]}$none]"
+            echo
+            for ((i = 1; i <= ${#menu_main[*]}; i++)); do
+                Stream="${menu_main[$i - 1]}"
+                if [[ "$i" -le 9 ]]; then
+                    # echo
+                    echo -e "$yellow  $i. $none${Stream}"
+                else
+                    # echo
+                    echo -e "$yellow $i. $none${Stream}"
+                fi
+            done
+            echo
+            read -p "$(echo -e "(请输入 ${cyan}序号$none)"):" menu_1
+            [ -z "$menu_1" ] && menu_1=1
+            case $menu_1 in
+            [1-9] | [1-2][0-9] | 3[0-2])
+                echo
+                echo
+                echo -e "$yellow 功能 = $cyan${menu_main[$menu_1 - 1]}$none"
+                echo "----------------------------------------------------------------"
+                echo
+                selectMenu_pcrbox
+                break
+                ;;
+            *)
+                error
+                ;;
+            esac
+    done
+    
+}
 
+selectMenu
 # echo -e "${GREEN} docker管理脚本--------------- ${RES}"
 # echo -e "${GREEN} 【1】注册 dockerManager${RES}"
 # echo -e "${GREEN} 【2】更新 pcr_box网站${RES}"
