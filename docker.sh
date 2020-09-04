@@ -24,9 +24,10 @@ menu_pcrbox=(
     启动 后台
     更新 代理配置
 )
-docker(){
-    selectMenu();
+error() {
+	echo -e "\n$red 输入错误！$none\n"
 }
+
 selectMenu(){
     echo 
     while :; do
@@ -96,9 +97,7 @@ selectMenu_pcrbox(){
 
 }
 
-error() {
-	echo -e "\n$red 输入错误！$none\n"
-}
+
 # echo -e "${GREEN} docker管理脚本--------------- ${RES}"
 # echo -e "${GREEN} 【1】注册 dockerManager${RES}"
 # echo -e "${GREEN} 【2】更新 pcr_box网站${RES}"
@@ -152,4 +151,7 @@ error() {
 # echo -e "${GREEN}退出脚本${RES}"
 # ;;
 # esac
+docker(){
+    selectMenu();
+}
 chmod -x ./docker.sh
