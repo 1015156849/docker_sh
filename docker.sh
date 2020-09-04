@@ -24,11 +24,10 @@ menu_pcrbox=(
     启动 后台
     更新 代理配置
 )
-selectMenu
 error() {
 	echo -e "\n$red 输入错误！$none\n"
 }
-selectMenu(){
+
     echo 
     while :; do
             echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menu_main[*]}$none]"
@@ -61,7 +60,7 @@ selectMenu(){
                 ;;
             esac
     done
-}
+
 
 selectMenu_pcrbox(){
     clear
