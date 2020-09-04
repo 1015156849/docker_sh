@@ -14,7 +14,7 @@ _magenta() { echo -e ${magenta}$*${none}; }
 _cyan() { echo -e ${cyan}$*${none}; }
 # 开始脚本
 menu_main=(
-    注册 dockerManager
+    注册dockerManager
     pcr_box网站
 )
 menu_pcrbox=(
