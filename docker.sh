@@ -152,6 +152,6 @@ selectMenu_pcrbox(){
 # ;;
 # esac
 docker(){
-    selectMenu();
+    selectMenu
 }
 chmod -x ./docker.sh
