@@ -14,7 +14,7 @@ _magenta() { echo -e ${magenta}$*${none}; }
 _cyan() { echo -e ${cyan}$*${none}; }
 # 开始脚本
 menu_main=(
-    注册dockerManager
+    dockerManager
     pcr_box网站
 )
 menu_pcrbox=(
@@ -24,11 +24,12 @@ menu_pcrbox=(
     启动 后台
     更新 代理配置
 )
+selectMenu
 error() {
 	echo -e "\n$red 输入错误！$none\n"
 }
-
-echo 
+selectMenu(){
+    echo 
     while :; do
             echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menu_main[*]}$none]"
             echo
@@ -52,6 +53,7 @@ echo
                 echo -e "$yellow 功能 = $cyan${menu_main[$menu_1 - 1]}$none"
                 echo "----------------------------------------------------------------"
                 echo
+                selectMenu_pcrbox
                 break
                 ;;
             *)
@@ -59,8 +61,10 @@ echo
                 ;;
             esac
     done
+}
 
 selectMenu_pcrbox(){
+    clear
     echo 
     while :; do
             echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menu_pcrbox[*]}$none]"
