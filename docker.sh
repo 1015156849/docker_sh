@@ -28,8 +28,7 @@ error() {
 	echo -e "\n$red 输入错误！$none\n"
 }
 
-docker(){
-    echo 
+echo 
     while :; do
             echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menu_main[*]}$none]"
             echo
@@ -59,9 +58,8 @@ docker(){
                 error
                 ;;
             esac
-        done
+    done
 
-}
 selectMenu_pcrbox(){
     echo 
     while :; do
