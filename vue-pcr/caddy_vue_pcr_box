@@ -1,9 +1,0 @@
-box.pcr.galibang.cn {
-    gzip
-    root /etc/caddy/www/vuepcr
-    index index.html
-    rewrite {
-        regexp .*
-        to {path} /
-    }
-}
