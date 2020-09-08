@@ -62,8 +62,8 @@ customInstall(){
                 # 3)
                 #     selectMenu_pcrbox
                 # ;;
-                # break
-                # ;;
+                break
+                ;;
             *)
                 error
                 ;;
