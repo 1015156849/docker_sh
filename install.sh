@@ -26,11 +26,7 @@ menuList=(
     公主连结Box网站
     yobot会战机器人
     hoshinobot机器人
-
 )
-mkdir -p /etc/ChaChaPRO/pcrbox
-cp -rf $(pwd)/* /etc/ChaChaPRO/pcrbox
-
 _load() {
 	local _dir="/etc/ChaChaPRO/pcrbox/src/"
 	. "${_dir}$@"
