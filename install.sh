@@ -22,11 +22,13 @@ menuList=(
     hoshinobot机器人
 
 )
+
 _load() {
 	local _dir="/etc/ChaChaPRO/src/"
 	. "${_dir}$@"
 }
-customInstall(){
+
+customInstall() {
     clear
     echo 
     while :; do
@@ -69,24 +71,27 @@ customInstall(){
                 ;;
             esac
     done
-    
 }
-installAll(){
+
+installAll() {
     echo
     echo "installAll！"
     echo 
 }
-uninstallAll(){
+
+uninstallAll() {
     echo
     echo "uninstallAll！"
     echo 
 }
-installBase(){
+
+installBase() {
     echo
     echo "installBase！"
     echo 
 }
-uninstallBase(){
+
+uninstallBase() {
     echo
     echo "uninstallBase！"
     echo 
