@@ -12,6 +12,12 @@ _green() { echo -e ${green}$*${none}; }
 _yellow() { echo -e ${yellow}$*${none}; }
 _magenta() { echo -e ${magenta}$*${none}; }
 _cyan() { echo -e ${cyan}$*${none}; }
+
+# Root
+[[ $(id -u) != 0 ]] && echo -e " 请使用 ${red}root ${none}用户运行 ${yellow}${none}" && exit 1
+
+_version="v1.0"
+
 # 开始脚本
 menuList=(
     docker
@@ -22,9 +28,11 @@ menuList=(
     hoshinobot机器人
 
 )
+mkdir -p /etc/ChaChaPRO/pcrbox
+cp -rf $(pwd)/* /etc/ChaChaPRO/pcrbox
 
 _load() {
-	local _dir="/etc/ChaChaPRO/src/"
+	local _dir="/etc/ChaChaPRO/pcrbox/src/"
 	. "${_dir}$@"
 }
 
