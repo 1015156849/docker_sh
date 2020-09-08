@@ -101,4 +101,3 @@ selectMenu
 # echo -e "${GREEN}退出脚本${RES}"
 # ;;
 # esac
-chmod -x ./install.sh

@@ -12,7 +12,6 @@ error() {
 	echo -e "\n$red 输入错误！$none\n"
 }
 
-
 installHtml(){
     chown www-data:www-data /etc/caddy/www
     mkdir -p /etc/caddy/www/vuepcr

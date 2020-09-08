@@ -100,28 +100,28 @@ uninstallBase() {
 clear
 while :; do
 	echo
-	echo "...........公主连结工具箱  一键安装脚本 & 管理脚本 by 茶茶PRO .........."
+	echo -e "$yellow ...........公主连结工具箱  一键安装脚本 & 管理脚本 by 茶茶PRO ..........$none"
 	echo
-	echo "帮助说明: https://gitee.com/teatea-pro/pcrbox"
+	echo -e "$yellow 帮助说明: https://gitee.com/teatea-pro/pcrbox$none"
 	echo
-    echo "默认安装 全部功能 需要一次性配置全部信息"
+    echo -e "$yellow 默认安装 全部功能 需要一次性配置全部信息$none"
     echo
-    echo "安装基础环境 仅包含 docker caddy反向代理"
+    echo -e "$yellow 安装基础环境 仅包含 docker caddy反向代理$none"
     echo
-    echo "docker管理网站 pcrbox公会战网站 yobot会战机器人 hoshinobot机器人 需要每项单独安装配置！"
+    echo -e "$yellow docker管理网站 pcrbox公会战网站 yobot会战机器人 hoshinobot机器人 需要每项单独安装配置！$none"
     echo 
     echo 
-	echo " 1. 安装全部"
+	echo -e "$yellow 1. 安装全部$none"
     echo 
-	echo " 2. 卸载全部"
+	echo -e "$yellow 2. 卸载全部$none"
     echo
-	echo " 3. 仅安装基础环境"
+	echo -e "$yellow 3. 仅安装基础环境$none"
 	echo
-	echo " 4. 仅卸载基础环境"
+	echo -e "$yellow 4. 仅卸载基础环境$none"
 	echo
-    echo " 5. 单独安装具体功能"
+    echo -e "$yellow 5. 单独安装具体功能$none"
 	echo
-	read -p "$(echo -e "请选择 [${magenta}1-2$none]:")" choose
+	read -p "$(echo -e "请选择 [${magenta}1-5$none]:")" choose
 	case $choose in
 	1)
 		installAll
@@ -148,4 +148,3 @@ while :; do
 		;;
 	esac
 done
-chmod -x ./install.sh
