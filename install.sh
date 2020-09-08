@@ -80,30 +80,36 @@ _load() {
 	. "${_dir}$@"
 }
 initInstall(){
-    $cmd update -y
-	if [[ $cmd == "apt-get" ]]; then
-		$cmd install -y lrzsz git zip unzip curl wget qrencode libcap2-bin dbus
+    if [[ -d /etc/ChaChaPRO/pcrbox ]]; then
+		echo
+		echo " 已初始化该脚本"
+		echo
 	else
-		# $cmd install -y lrzsz git zip unzip curl wget qrencode libcap iptables-services
-		$cmd install -y lrzsz git zip unzip curl wget qrencode libcap
+        $cmd update -y
+        if [[ $cmd == "apt-get" ]]; then
+        $cmd install -y lrzsz git zip unzip curl wget qrencode libcap2-bin dbus
+        else
+        # $cmd install -y lrzsz git zip unzip curl wget qrencode libcap iptables-services
+        $cmd install -y lrzsz git zip unzip curl wget qrencode libcap
+        fi
+        [ -d /etc/ChaChaPRO ] && rm -rf /etc/ChaChaPRO
+
+        mkdir -p /etc/ChaChaPRO/pcrbox
+        cp -rf $(pwd)/* /etc/ChaChaPRO/pcrbox
+        # pushd /tmp
+        # git clone https://github.com/1015156849/docker_sh -b "$_gitbranch" /etc/ChaChaPRO/pcrbox --depth=1
+        # popd
+
+        if [[ ! -d /etc/ChaChaPRO/pcrbox ]]; then
+            echo
+            echo -e "$red 哎呀呀...克隆脚本仓库出错了...$none"
+            echo
+            echo -e " 温馨提示..... 请尝试自行安装 Git: ${green}$cmd install -y git $none 之后再安装此脚本"
+            echo
+            exit 1
+        fi
 	fi
-    [ -d /etc/ChaChaPRO ] && rm -rf /etc/ChaChaPRO
-
-    mkdir -p /etc/ChaChaPRO/pcrbox
-    cp -rf $(pwd)/* /etc/ChaChaPRO/pcrbox
-    # pushd /tmp
-	# git clone https://github.com/1015156849/docker_sh -b "$_gitbranch" /etc/ChaChaPRO/pcrbox --depth=1
-	# popd
-
-    if [[ ! -d /etc/ChaChaPRO/pcrbox ]]; then
-		echo
-		echo -e "$red 哎呀呀...克隆脚本仓库出错了...$none"
-		echo
-		echo -e " 温馨提示..... 请尝试自行安装 Git: ${green}$cmd install -y git $none 之后再安装此脚本"
-		echo
-		exit 1
-	fi
-
+    
 }
 customInstall() {
     echo 
