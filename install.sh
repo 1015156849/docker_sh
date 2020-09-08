@@ -56,16 +56,17 @@ customInstall() {
                 case $menu in
                 1)
                     _load docker.sh
+                break
                 ;;
                 2)
-                    
+                break   
                 ;;
                 3)
                     _load caddy.sh
+                break
                 ;;
                 4)
                     _load vue-pcrbox.sh
-                ;;
                 break
                 ;;
             *)
