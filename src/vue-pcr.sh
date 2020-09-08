@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 # 开始脚本
-menuList=(
+menu_list_pcr_box_vue=(
     更新网站
     仅更新后台
     仅启动后台
@@ -13,7 +13,7 @@ error() {
 }
 
 installHtml(){
-    chown www-data:www-data /etc/caddy/www
+    chown root:root /etc/caddy/www
     mkdir -p /etc/caddy/www/vuepcr
     cd /etc/caddy/www/vuepcr 
     wget -c https://github.com/1015156849/pcr-guild-vue/releases/download/1.0/dist.zip
@@ -41,13 +41,14 @@ updateCaddy(){
 }
 
 selectMenu(){
-    clear
-    echo 
     while :; do
-            echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menuList[*]}$none]"
             echo
-            for ((i = 1; i <= ${#menuList[*]}; i++)); do
-                Stream="${menuList[$i - 1]}"
+            echo -e "$yellow ..........公主连结公会战box网站 ..........$none"
+            echo
+            echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menu_list_pcr_box_vue[*]}$none]"
+            echo
+            for ((i = 1; i <= ${#menu_list_pcr_box_vue[*]}; i++)); do
+                Stream="${menu_list_pcr_box_vue[$i - 1]}"
                 if [[ "$i" -le 9 ]]; then
                     # echo
                     echo -e "$yellow  $i. $none${Stream}"
@@ -63,7 +64,7 @@ selectMenu(){
             [1-9] | [1-2][0-9] | 3[0-2])
                 echo
                 echo
-                echo -e "$yellow 功能 = $cyan${menuList[$menu - 1]}$none"
+                echo -e "$yellow 功能 = $cyan${menu_list_pcr_box_vue[$menu - 1]}$none"
                 echo "----------------------------------------------------------------"
                 echo
                 case $menu in

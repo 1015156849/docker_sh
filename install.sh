@@ -29,7 +29,6 @@ _load() {
 }
 
 customInstall() {
-    clear
     echo 
     while :; do
             echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menuList[*]}$none]"
@@ -54,16 +53,19 @@ customInstall() {
                 echo -e "$yellow 功能 = $cyan${menuList[$menu - 1]}$none"
                 echo "----------------------------------------------------------------"
                 echo
-                # case $menu in
-                # 1)
-                #     _load docker.sh
-                # ;;
-                # 2)
-                #     selectMenu_caddy
-                # ;;
-                # 3)
-                #     selectMenu_pcrbox
-                # ;;
+                case $menu in
+                1)
+                    _load docker.sh
+                ;;
+                2)
+                    
+                ;;
+                3)
+                    _load caddy.sh
+                ;;
+                4)
+                    _load vue-pcrbox.sh
+                ;;
                 break
                 ;;
             *)

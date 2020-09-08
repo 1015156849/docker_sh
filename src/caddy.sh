@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 # 开始脚本
-menuList=(
+menu_list_caddy=(
     安装
     卸载
     启动
@@ -11,14 +11,15 @@ menuList=(
 
 )
 
-selectMenu(){
-    clear
-    echo 
+_menu_install_caddy(){
     while :; do
-            echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menuList[*]}$none]"
             echo
-            for ((i = 1; i <= ${#menuList[*]}; i++)); do
-                Stream="${menuList[$i - 1]}"
+            echo -e "$yellow ..........Caddy代理服务 ..........$none"
+            echo
+            echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menu_list_caddy[*]}$none]"
+            echo
+            for ((i = 1; i <= ${#menu_list_caddy[*]}; i++)); do
+                Stream="${menu_list_caddy[$i - 1]}"
                 if [[ "$i" -le 9 ]]; then
                     # echo
                     echo -e "$yellow  $i. $none${Stream}"
@@ -34,7 +35,7 @@ selectMenu(){
             [1-9] | [1-2][0-9] | 3[0-2])
                 echo
                 echo
-                echo -e "$yellow 功能 = $cyan${menuList[$menu - 1]}$none"
+                echo -e "$yellow 功能 = $cyan${menu_list_caddy[$menu - 1]}$none"
                 echo "----------------------------------------------------------------"
                 echo
                 break
@@ -46,8 +47,6 @@ selectMenu(){
         done
 
 }
-
-selectMenu
 # echo -e "${GREEN} docker管理脚本--------------- ${RES}"
 # echo -e "${GREEN} 【1】注册 dockerManager${RES}"
 # echo -e "${GREEN} 【2】更新 pcr_box网站${RES}"
