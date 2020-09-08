@@ -72,16 +72,24 @@ customInstall(){
     
 }
 installAll(){
-
+    echo
+    echo "installAll！"
+    echo 
 }
 uninstallAll(){
-
+    echo
+    echo "uninstallAll！"
+    echo 
 }
 installBase(){
-
+    echo
+    echo "installBase！"
+    echo 
 }
 uninstallBase(){
-
+    echo
+    echo "uninstallBase！"
+    echo 
 }
 
 clear
