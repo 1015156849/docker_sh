@@ -32,10 +32,10 @@ customInstall() {
     clear
     echo 
     while :; do
-            echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menu_main[*]}$none]"
+            echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menuList[*]}$none]"
             echo
-            for ((i = 1; i <= ${#menu_main[*]}; i++)); do
-                Stream="${menu_main[$i - 1]}"
+            for ((i = 1; i <= ${#menuList[*]}; i++)); do
+                Stream="${menuList[$i - 1]}"
                 if [[ "$i" -le 9 ]]; then
                     # echo
                     echo -e "$yellow  $i. $none${Stream}"
@@ -51,7 +51,7 @@ customInstall() {
             [1-9] | [1-2][0-9] | 3[0-2])
                 echo
                 echo
-                echo -e "$yellow 功能 = $cyan${menu_main[$menu - 1]}$none"
+                echo -e "$yellow 功能 = $cyan${menuList[$menu - 1]}$none"
                 echo "----------------------------------------------------------------"
                 echo
                 # case $menu in
