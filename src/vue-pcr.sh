@@ -8,9 +8,6 @@ menu_list_pcr_box_vue=(
     更新并启动后台
     更新代理配置
 )
-error() {
-	echo -e "\n$red 输入错误！$none\n"
-}
 
 installHtml(){
     chown root:root /etc/caddy/www
@@ -40,7 +37,7 @@ updateCaddy(){
     service caddy reload
 }
 
-selectMenu(){
+_menu_install_pcr_box_vue(){
     while :; do
             echo
             echo -e "$yellow ..........公主连结公会战box网站 ..........$none"
@@ -67,41 +64,42 @@ selectMenu(){
                 echo -e "$yellow 功能 = $cyan${menu_list_pcr_box_vue[$menu - 1]}$none"
                 echo "----------------------------------------------------------------"
                 echo
-                case $menu in
-                            1)
-                            #更新网站
-                            installHtml
-                            ;;
-                            2)
-                            #仅更新后台
-                            cleanServer
-                            buildServer
-                            updateCaddy
-                            ;;
-                            3)
-                            #仅启动后台
-                            stopServer
-                            runServer
-                            updateCaddy
-                            ;;
-                            4)
-                            #更新并启动后台
-                            cleanServer
-                            buildServer
-                            runServer
-                            updateCaddy
-                            ;;
-                            5)
-                            #更新代理配置
-                            updateCaddy
-                            ;;
-                
-                break
                 ;;
+            1)
+            #更新网站
+            installHtml
+            break
+            ;;
+            2)
+            #仅更新后台
+            cleanServer
+            buildServer
+            updateCaddy
+            break
+            ;;
+            3)
+            #仅启动后台
+            stopServer
+            runServer
+            updateCaddy
+            break
+            ;;
+            4)
+            #更新并启动后台
+            cleanServer
+            buildServer
+            runServer
+            updateCaddy
+            break
+            ;;
+            5)
+            #更新代理配置
+            updateCaddy
+            break
+            ;; 
             *)
                 error
                 ;;
             esac
         done
 }
-selectMenu

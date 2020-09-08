@@ -35,19 +35,21 @@ _menu_install_docker(){
                 echo -e "$yellow 功能 = $cyan${menu_list_docker[$menu - 1]}$none"
                 echo "----------------------------------------------------------------"
                 echo
-                case $menu in
+                ;;
                 1)
                 #安装
+                break
                 ;;
                 2)
                 #卸载
+                break
                 ;;
                 3)
                 #查看镜像
+                break
                 ;;
                 4)
                 #查看容器
-                ;;
                 break
                 ;;
             *)

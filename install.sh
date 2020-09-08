@@ -52,23 +52,26 @@ customInstall() {
                 echo
                 echo -e "$yellow 功能 = $cyan${menuList[$menu - 1]}$none"
                 echo "----------------------------------------------------------------"
-                echo
-                case $menu in
-                1)
-                    _load docker.sh
-                break
+                echo     
                 ;;
-                2)
-                break   
-                ;;
-                3)
-                    _load caddy.sh
-                break
-                ;;
-                4)
-                    _load vue-pcrbox.sh
-                break
-                ;;
+            1)
+                _load docker.sh
+                _menu_install_docker
+            break
+            ;;
+            2)
+            break
+            ;;
+            3)
+                _load caddy.sh
+                _menu_install_caddy
+            break
+            ;;
+            4)
+                _load vue-pcrbox.sh
+                _menu_install_pcr_box_vue
+            break
+            ;;
             *)
                 error
                 ;;
