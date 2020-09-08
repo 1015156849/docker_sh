@@ -1,0 +1,31 @@
+# 替换为作为机器人的qq号和密码
+botqqid=3058150659
+botqqpswd="zgop1502986/"
+
+# 创建持久化文件夹
+miraidir=$(pwd)/mirai
+mkdir ${miraidir}
+
+# 配置自动登录文件
+echo "
+----------
+login ${botqqid} ${botqqpswd}
+
+" > ${miraidir}/config.txt
+# 如果你需要手动编辑这个文件，请注意：
+# 第一行的 ---------- 不可省略
+# 最后一个换行不可省略
+# 换行必须使用 \n，不能用 \r\n（不要在 Windows 下编辑再上传）
+
+# 配置 cqhttp-mirai
+echo "
+\"${botqqid}\":
+  ws_reverse:
+    - enable: true
+      postMessageFormat: string
+      reverseHost: yobot
+      reversePort: 9222
+      reversePath: /ws/
+      accessToken: null
+      reconnectInterval: 3000
+" > ${miraidir}/setting.yml

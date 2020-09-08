@@ -1,0 +1,5 @@
+docker.galibang.cn {
+        gzip
+    timeouts none
+    proxy / 127.0.0.1:9000
+}
