@@ -135,3 +135,4 @@ while :; do
 		;;
 	esac
 done
+chmod -x ./install.sh
