@@ -119,8 +119,7 @@ initInstall(){
 	fi
     
 }
-customInstall() {
-    echo 
+customInstall() { 
     while :; do
             echo -e "请选择 "$yellow"功能"$none" 序号 [${magenta}1-${#menuList[*]}$none]"
             echo
@@ -136,7 +135,6 @@ customInstall() {
             done
             echo
             read -p "$(echo -e "(请输入 ${cyan}序号$none)"):" menu
-            [ -z "$menu" ] && menu=1
             case $menu in
             1)
                 _load docker.sh
@@ -213,7 +211,7 @@ while :; do
 	echo
     echo -e "$yellow 6. 更新脚本$none"
 	echo
-	read -p "$(echo -e "请选择 [${magenta}1-5$none]:")" choose
+	read -p "$(echo -e "请选择 [${magenta}1-6$none]:")" choose
 	case $choose in
 	1)
         initInstall
