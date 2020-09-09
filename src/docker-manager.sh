@@ -25,9 +25,6 @@ _install_docker_manager(){
 		break
 	done
 }
-_caddy_conf(){
-
-}
 _uninstall_docker_manager(){
     docker stop portainer
     docker rm portainer
