@@ -10,6 +10,7 @@ menu_list_pcr_box_vue=(
 )
 
 installHtml(){
+    echo -e "$green 部署HTML$none"
     chown root:root /etc/caddy/www
     mkdir -p /etc/caddy/www/vuepcr
     cd /etc/caddy/www/vuepcr 
@@ -19,20 +20,25 @@ installHtml(){
 }
 cleanServer(){
     stopServer
+    echo -e "$green 清理doker镜像$none"
     docker rmi vuepcrserver   
 }
 buildServer(){
+    echo -e "$green build doker容器$none"
     docker build -t vuepcrserver:1.0 ~/docker_sh/pcr_box/.
 }
 stopServer(){
+    echo -e "$green stop doker容器$none"
     docker stop vuepcrserver
     docker rm vuepcrserver
 }
 runServer(){
+    echo -e "$green run doker容器 8081:80$none"
     docker run -itd -p 8081:80 --name vuepcrserver vuepcrserver:1.0
         
 }
 updateCaddy(){
+    echo -e "$green 更新Caddy代理配置$none"
     cp ~/docker_sh/pcr_box/caddy_vue_pcr_box_server /etc/caddy/sites
     service caddy reload
 }
@@ -98,8 +104,8 @@ _menu_install_pcr_box_vue(){
             break
             ;; 
             *)
-                error
-                ;;
+            error
+            ;;
             esac
         done
 }
