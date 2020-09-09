@@ -5,10 +5,9 @@ menu_list_docker_manager=(
     安装
     卸载
 )
-backup_config() {
+_backup_config() {
     sed -i "8s/=chachaPRO/=$domain/" $_backup
 }
-_
 _install_docker_manager(){
     docker pull portainer/portainer
     docker run -d -p 9000:9000 --restart=always  -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data -v /etc/ChaChaPRO/pcrbox/dockerManager/zh:/public --name portainer portainer/portainer
@@ -22,9 +21,12 @@ _install_docker_manager(){
 		echo
 		echo -e "$yellow 你的域名 = $cyan$domain$none"
 		echo "----------------------------------------------------------------"
-        backup_config
+        _backup_config
 		break
 	done
+}
+_caddy_conf(){
+    
 }
 _uninstall_docker_manager(){
     docker stop portainer
