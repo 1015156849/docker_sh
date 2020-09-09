@@ -142,6 +142,8 @@ customInstall() {
                 break
             ;;
             2)
+                _load docker-manager.sh
+                _menu_install_docker_manager
                 break
             ;;
             3)
