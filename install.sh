@@ -157,8 +157,9 @@ customInstall() {
             break
             ;;
             4)
-                _load vue-pcr.sh
-                _menu_install_pcr_box_vue
+                chmod +x ./src/vue-pcr.sh
+                ./src/vue-pcr.sh
+                chmod -x ./src/vue-pcr.sh
             break
             ;;
             *)
