@@ -157,7 +157,7 @@ customInstall() {
             break
             ;;
             4)
-                _load vue-pcrbox.sh
+                _load vue-pcr.sh
                 _menu_install_pcr_box_vue
             break
             ;;
