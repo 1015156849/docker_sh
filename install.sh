@@ -88,12 +88,13 @@ update(){
     $cmd install -y lrzsz git zip unzip curl wget qrencode libcap
     fi
     [ -d /etc/ChaChaPRO ] && rm -rf /etc/ChaChaPRO
-
     mkdir -p /etc/ChaChaPRO/pcrbox
-    cp -rf $(pwd)/* /etc/ChaChaPRO/pcrbox
-    # pushd /tmp
-    # git clone https://github.com/1015156849/docker_sh -b "$_gitbranch" /etc/ChaChaPRO/pcrbox --depth=1
-    # popd
+
+    pushd /tmp
+    git clone https://github.com/1015156849/docker_sh -b "$_gitbranch" /etc/ChaChaPRO/pcrbox --depth=1
+    popd
+    # mkdir -p /etc/ChaChaPRO/pcrbox
+    # cp -rf $(pwd)/* /etc/ChaChaPRO/pcrbox
 
     if [[ ! -d /etc/ChaChaPRO/pcrbox ]]; then
         echo
