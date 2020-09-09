@@ -159,6 +159,7 @@ customInstall() {
             break
             ;;
             4)
+                pwd
                 chmod +x ${_dir}vue-pcr.sh
                 ${_dir}vue-pcr.sh
                 chmod -x ${_dir}vue-pcr.sh
