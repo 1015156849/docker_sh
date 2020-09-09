@@ -139,20 +139,20 @@ customInstall() {
             1)
                 _load docker.sh
                 _menu_install_docker
-            break
+                break
             ;;
             2)
-            break
+                break
             ;;
             3)
                 _load caddy.sh
                 _menu_install_caddy
-            break
+                break
             ;;
             4)
                 _load vue-pcr.sh
                 _menu_install_pcr_box_vue
-            break
+                break
             ;;
             *)
                 error
