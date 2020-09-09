@@ -108,4 +108,3 @@ _menu_install_pcr_box_vue(){
             esac
         done
 }
-_menu_install_pcr_box_vue

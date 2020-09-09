@@ -138,13 +138,6 @@ customInstall() {
             read -p "$(echo -e "(请输入 ${cyan}序号$none)"):" menu
             [ -z "$menu" ] && menu=1
             case $menu in
-            [1-9] | [1-2][0-9] | 3[0-2])
-                echo
-                echo
-                echo -e "$yellow 功能 = $cyan${menuList[$menu - 1]}$none"
-                echo "----------------------------------------------------------------"
-                echo     
-                ;;
             1)
                 _load docker.sh
                 _menu_install_docker
@@ -159,10 +152,8 @@ customInstall() {
             break
             ;;
             4)
-                pwd
-                chmod +x ${_dir}vue-pcr.sh
-                ${_dir}vue-pcr.sh
-                chmod -x ${_dir}vue-pcr.sh
+                _load vue-pcr.sh
+                _menu_install_pcr_box_vue
             break
             ;;
             *)
