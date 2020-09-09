@@ -5,10 +5,26 @@ menu_list_docker_manager=(
     安装
     卸载
 )
-
+backup_config() {
+    sed -i "8s/=chachaPRO/=$domain/" $_backup
+}
+_
 _install_docker_manager(){
     docker pull portainer/portainer
     docker run -d -p 9000:9000 --restart=always  -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data -v /etc/ChaChaPRO/pcrbox/dockerManager/zh:/public --name portainer portainer/portainer
+
+    while :; do
+		echo
+		echo -e "请输入一个 $magenta正确的域名$none，一定一定一定要正确，不！能！出！错！"
+		read -p "(例如：github.com): " domain
+		[ -z "$domain" ] && error && continue
+		echo
+		echo
+		echo -e "$yellow 你的域名 = $cyan$domain$none"
+		echo "----------------------------------------------------------------"
+        backup_config
+		break
+	done
 }
 _uninstall_docker_manager(){
     docker stop portainer
@@ -18,7 +34,6 @@ _uninstall_docker_manager(){
 _menu_install_docker_manager(){
     while :; do
             echo
-            Portainer
             echo -e "$yellow ........................................Docker管理网站..................................................$none"
             echo
             echo -e "$yellow 安装的管理面板为 Portainer.io，因为823 pma安全事故，暂不加入国产的宝塔平台安装脚本。如果必须要用宝塔，请自行动手 $none"

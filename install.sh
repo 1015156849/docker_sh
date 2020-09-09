@@ -26,6 +26,9 @@ _gitbranch="master"
 
 _dir="/etc/ChaChaPRO/pcrbox/src/"
 
+_backup="/etc/ChaChaPRO/pcrbox/backup.conf"
+
+
 case $sys_bit in
 i[36]86)
 	caddy_arch="386"
@@ -67,6 +70,20 @@ else
 	" && exit 1
 
 fi
+
+
+get_ip() {
+	ip=$(curl -s https://ipinfo.io/ip)
+	[[ -z $ip ]] && ip=$(curl -s https://api.ip.sb/ip)
+	[[ -z $ip ]] && ip=$(curl -s https://api.ipify.org)
+	[[ -z $ip ]] && ip=$(curl -s https://ip.seeip.org)
+	[[ -z $ip ]] && ip=$(curl -s https://ifconfig.co/ip)
+	[[ -z $ip ]] && ip=$(curl -s https://api.myip.com | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
+	[[ -z $ip ]] && ip=$(curl -s icanhazip.com)
+	[[ -z $ip ]] && ip=$(curl -s myip.ipip.net | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
+	[[ -z $ip ]] && echo -e "\n$red 这垃圾小鸡扔了吧！$none\n" && exit
+}
+
 
 # 开始脚本
 menuList=(
@@ -248,3 +265,20 @@ while :; do
 		;;
 	esac
 done
+
+backup_config() {
+	sed -i "18s/=1/=$v2ray_transport/; 21s/=2333/=$v2ray_port/; 24s/=$old_id/=$uuid/" $backup
+	if [[ $v2ray_transport -ge 18 ]]; then
+		sed -i "30s/=10000/=$v2ray_dynamic_port_start_input/; 33s/=20000/=$v2ray_dynamic_port_end_input/" $backup
+	fi
+	if [[ $shadowsocks ]]; then
+		sed -i "42s/=/=true/; 45s/=6666/=$ssport/; 48s/=233blog.com/=$sspass/; 51s/=chacha20-ietf/=$ssciphers/" $backup
+	fi
+	[[ $v2ray_transport == [45] ]] && sed -i "36s/=233blog.com/=$domain/" $backup
+	[[ $caddy ]] && sed -i "39s/=/=true/" $backup
+	[[ $ban_ad ]] && sed -i "54s/=/=true/" $backup
+	if [[ $is_path ]]; then
+		sed -i "57s/=/=true/; 60s/=233blog/=$path/" $backup
+		sed -i "63s#=https://liyafly.com#=$proxy_site#" $backup
+	fi
+}
