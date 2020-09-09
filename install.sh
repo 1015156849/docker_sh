@@ -16,7 +16,55 @@ _cyan() { echo -e ${cyan}$*${none}; }
 # Root
 [[ $(id -u) != 0 ]] && echo -e " 请使用 ${red}root ${none}用户运行 ${yellow}${none}" && exit 1
 
+cmd="apt-get"
+
+sys_bit=$(uname -m)
+
 _version="v1.0"
+
+_gitbranch="master"
+
+case $sys_bit in
+i[36]86)
+	caddy_arch="386"
+	;;
+'amd64' | x86_64)
+	caddy_arch="amd64"
+	;;
+*armv6*)
+	caddy_arch="arm6"
+	;;
+*armv7*)
+	caddy_arch="arm7"
+	;;
+*aarch64* | *armv8*)
+	caddy_arch="arm64"
+	;;
+*)
+	echo -e " 
+	${red}本脚本${none} 不支持你的系统。 ${yellow}(-_-) ${none}
+	备注: 仅支持 Ubuntu 16+ / Debian 8+ / CentOS 7+ 系统
+	" && exit 1
+	;;
+esac
+
+# 检测方法
+if [[ $(command -v apt-get) || $(command -v yum) ]] && [[ $(command -v systemctl) ]]; then
+
+	if [[ $(command -v yum) ]]; then
+
+		cmd="yum"
+
+	fi
+
+else
+
+	echo -e " 
+	${red}本脚本${none} 不支持你的系统。 ${yellow}(-_-) ${none}
+	备注: 仅支持 Ubuntu 16+ / Debian 8+ / CentOS 7+ 系统
+	" && exit 1
+
+fi
 
 # 开始脚本
 menuList=(
@@ -31,7 +79,43 @@ _load() {
 	local _dir="/etc/ChaChaPRO/pcrbox/src/"
 	. "${_dir}$@"
 }
+update(){
+    $cmd update -y
+    if [[ $cmd == "apt-get" ]]; then
+    $cmd install -y lrzsz git zip unzip curl wget qrencode libcap2-bin dbus
+    else
+    # $cmd install -y lrzsz git zip unzip curl wget qrencode libcap iptables-services
+    $cmd install -y lrzsz git zip unzip curl wget qrencode libcap
+    fi
+    [ -d /etc/ChaChaPRO ] && rm -rf /etc/ChaChaPRO
 
+    mkdir -p /etc/ChaChaPRO/pcrbox
+    cp -rf $(pwd)/* /etc/ChaChaPRO/pcrbox
+    # pushd /tmp
+    # git clone https://github.com/1015156849/docker_sh -b "$_gitbranch" /etc/ChaChaPRO/pcrbox --depth=1
+    # popd
+
+    if [[ ! -d /etc/ChaChaPRO/pcrbox ]]; then
+        echo
+        echo -e "$red 哎呀呀...克隆脚本仓库出错了...$none"
+        echo
+        echo -e " 温馨提示..... 请尝试自行安装 Git: ${green}$cmd install -y git $none 之后再安装此脚本"
+        echo
+        exit 1
+    else
+        echo "脚本更新完毕"
+    fi
+}
+initInstall(){
+    if [[ -d /etc/ChaChaPRO/pcrbox ]]; then
+		echo
+		echo " 已初始化该脚本"
+		echo
+	else
+       update
+	fi
+    
+}
 customInstall() {
     echo 
     while :; do
@@ -131,9 +215,12 @@ while :; do
 	echo
     echo -e "$yellow 5. 单独安装具体功能$none"
 	echo
+    echo -e "$yellow 6. 更新脚本$none"
+	echo
 	read -p "$(echo -e "请选择 [${magenta}1-5$none]:")" choose
 	case $choose in
 	1)
+        initInstall
 		installAll
 		break
 		;;
@@ -142,17 +229,24 @@ while :; do
 		break
 		;;
     3)
+        initInstall
         installBase
         break
         ;;
     4)
+        initInstall
         uninstallBase
         break
         ;;
     5)
+        initInstall
         customInstall
         break
-        ;;        
+        ;;
+    6)
+        update
+        break
+        ;;          
 	*)
 		error
 		;;
