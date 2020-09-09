@@ -24,6 +24,8 @@ _version="v1.0"
 
 _gitbranch="master"
 
+_dir="/etc/ChaChaPRO/pcrbox/src/"
+
 case $sys_bit in
 i[36]86)
 	caddy_arch="386"
@@ -157,9 +159,9 @@ customInstall() {
             break
             ;;
             4)
-                chmod +x ./src/vue-pcr.sh
-                ./src/vue-pcr.sh
-                chmod -x ./src/vue-pcr.sh
+                chmod +x ${_dir}vue-pcr.sh
+                ${_dir}vue-pcr.sh
+                chmod -x ${_dir}vue-pcr.sh
             break
             ;;
             *)
