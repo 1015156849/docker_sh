@@ -6,14 +6,17 @@ menu_list_docker=(
     卸载
 )
 _install_docker(){
+    echo -e "$yellow ..........Docker安装过程中，请不要输入任何字符！..........$none"
     apt-get update
     curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
     systemctl start docker
     systemctl enable docker
+    echo -e "$green ..........Docker安装完毕..........$none"
 }
 _uninstall_docker(){
     apt-get remove docker docker-engine docker-ce docker.io
     rm -rf /var/lib/docker
+    echo -e "$green ..........Docker卸载完毕..........$none"
 }
 _menu_install_docker(){
     while :; do
