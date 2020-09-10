@@ -11,11 +11,12 @@ menu_list_pcr_box_vue=(
 
 installHtml(){
     echo -e "$green 部署HTML$none"
-    chown root:root /etc/caddy/www
+    # chown root:root /etc/caddy/www
     mkdir -p /etc/caddy/www/vuepcr
-    wget -c https://github.com/1015156849/pcr-guild-vue/releases/download/1.0/dist.zip -P /etc/caddy/www/vuepcr 
-    unzip /etc/caddy/www/vuepcr/dist.zip
-    rm /etc/caddy/www/vuepcr/dist.zip
+    cd /etc/caddy/www/vuepcr 
+    wget -c https://github.com/1015156849/pcr-guild-vue/releases/download/1.0/dist.zip
+    unzip dist.zip
+    rm dist.zip
 }
 cleanServer(){
     stopServer
@@ -48,14 +49,12 @@ _creat_pcr_box_vue_caddy_config(){
 		echo -e "$yellow 你的域名 = $cyan$pcrbox_url$none"
 		echo "----------------------------------------------------------------"
                 echo -e "$green 更新Caddy代理配置$none"
-                rm /etc/caddy/sites/caddy_vue_pcr_box_server
-                touch /etc/caddy/sites/caddy_vue_pcr_box_server
                 cat >/etc/caddy/sites/caddy_vue_pcr_box_server<<-EOF
 $pcrbox_url {
     gzip
     root /etc/caddy/www/vuepcr
     index index.html 
-    proxy /api localhost:8081 {
+    proxy /api 127.0.0.1:8081 {
         transparent
     }
 }
