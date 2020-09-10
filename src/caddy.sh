@@ -16,9 +16,15 @@ EOF
 }
 
 _install_caddy(){
+    if [[ -f /etc/caddy/ && -f /etc/caddy/Caddyfile ]]; then
+		echo
+		echo "你已经安装 caddy ...无需重新安装,如果有问题，请执行脚本中的卸载命令 （可能会导致其他软件配置失效，请自行确认）"
+		echo
+    else
     _load download-caddy.sh
 	_download_caddy_file
 	_install_caddy_service
+    fi
     sed -i "16s/User=www-data/User=root/; 17s/Group=www-data/Group=root/" "/lib/systemd/system/caddy.service"
     systemctl daemon-reload
     _creat_default_caddy_config
