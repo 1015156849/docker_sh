@@ -6,8 +6,6 @@ menu_list_caddy=(
     卸载
 )
 _creat_default_caddy_config(){
-    rm /etc/caddy/Caddyfile
-    touch /etc/caddy/Caddyfile
     cat >>/etc/caddy/Caddyfile<<-EOF
 import sites/*
 EOF
@@ -16,7 +14,7 @@ EOF
 }
 
 _install_caddy(){
-    if [[ -f /etc/caddy/ && -f /etc/caddy/Caddyfile ]]; then
+    if [[ -d /etc/caddy/ && -f /etc/caddy/Caddyfile ]]; then
 		echo
 		echo "你已经安装 caddy ...无需重新安装,如果有问题，请执行脚本中的卸载命令 （可能会导致其他软件配置失效，请自行确认）"
 		echo
