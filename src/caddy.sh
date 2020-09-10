@@ -20,11 +20,14 @@ _install_caddy(){
 	_download_caddy_file
 	_install_caddy_service
     _creat_default_caddy_config
-
+    echo -e "$yellow ..........Caddy代理服务 安装完毕 ..........$none"
     
 }
 _uninstall_caddy(){
+    service caddy stop
     apt-get remove caddy
+    rm -rf /etc/caddy/
+    echo -e "$yellow ..........Caddy代理服务 卸载完毕 ..........$none"
 }
 _menu_install_caddy(){
     while :; do
