@@ -14,8 +14,8 @@ installHtml(){
     chown root:root /etc/caddy/www
     mkdir -p /etc/caddy/www/vuepcr
     wget -c https://github.com/1015156849/pcr-guild-vue/releases/download/1.0/dist.zip -P /etc/caddy/www/vuepcr 
-    unzip dist.zip
-    rm dist.zip
+    unzip /etc/caddy/www/vuepcr/dist.zip
+    rm /etc/caddy/www/vuepcr/dist.zip
 }
 cleanServer(){
     stopServer
