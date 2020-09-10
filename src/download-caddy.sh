@@ -102,6 +102,9 @@ _install_caddy_service() {
 		update-rc.d -f caddy defaults
 	fi
 
+	if [ -z "$(grep www-data /etc/passwd)" ]; then
+		useradd -M -s /usr/sbin/nologin www-data
+	fi
 	# chown -R www-data.www-data /etc/ssl/caddy
 
 	# ref https://github.com/caddyserver/caddy/tree/master/dist/init/linux-systemd
@@ -109,7 +112,7 @@ _install_caddy_service() {
 	mkdir -p /etc/caddy
 	chown -R root:root /etc/caddy
 	mkdir -p /etc/ssl/caddy
-	chown -R root:root /etc/ssl/caddy
+	chown -R root:www-data /etc/ssl/caddy
 	chmod 0770 /etc/ssl/caddy
 
 	## create sites dir
