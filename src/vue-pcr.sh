@@ -37,10 +37,35 @@ runServer(){
     docker run -itd -p 8081:80 --name vuepcrserver vuepcrserver:1.0
         
 }
-updateCaddy(){
-    echo -e "$green 更新Caddy代理配置$none"
-    cp /etc/ChaChaPRO/pcrbox/pcr_box/caddy_vue_pcr_box_server /etc/caddy/sites
+
+_creat_pcr_box_vue_caddy_config(){
+    while :; do
+		echo
+		echo -e "请输入一个 $magenta正确的域名$none，来映射到公会战box网站"
+		read -p "(例如：github.com): " pcrbox_url
+		[ -z "$pcrbox_url" ] && error && continue
+		echo
+		echo
+		echo -e "$yellow 你的域名 = $cyan$pcrbox_url$none"
+		echo "----------------------------------------------------------------"
+                echo -e "$green 更新Caddy代理配置$none"
+                rm /etc/caddy/sites/caddy_vue_pcr_box_server
+                touch /etc/caddy/sites/caddy_vue_pcr_box_server
+                cat >/etc/caddy/sites/caddy_vue_pcr_box_server<<-EOF
+$pcrbox_url {
+    gzip
+    root /etc/caddy/www/vuepcr
+    index index.html 
+    proxy /api localhost:8081 {
+        transparent
+    }
+}
+EOF
     service caddy reload
+       
+		break
+	done
+   
 }
 
 _menu_install_pcr_box_vue(){
@@ -69,7 +94,7 @@ _menu_install_pcr_box_vue(){
             cleanServer
             buildServer
             runServer
-            updateCaddy
+            _creat_pcr_box_vue_caddy_config
             break
             ;;
             2)
@@ -81,14 +106,14 @@ _menu_install_pcr_box_vue(){
             #仅更新后台
             cleanServer
             buildServer
-            updateCaddy
+            _creat_pcr_box_vue_caddy_config
             break
             ;;
             4)
             #仅启动后台
             stopServer
             runServer
-            updateCaddy
+            _creat_pcr_box_vue_caddy_config
             break
             ;;
             5)
@@ -96,12 +121,12 @@ _menu_install_pcr_box_vue(){
             cleanServer
             buildServer
             runServer
-            updateCaddy
+            _creat_pcr_box_vue_caddy_config
             break
             ;;
             6)
             #更新代理配置
-            updateCaddy
+            _creat_pcr_box_vue_caddy_config
             break
             ;; 
             *)
