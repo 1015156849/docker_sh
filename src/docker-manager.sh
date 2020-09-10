@@ -6,9 +6,9 @@ menu_list_docker_manager=(
     卸载
 )
 _creat_docker_manager_caddy_config(){
-    # rm /etc/caddy/sites/caddy_docker
-    # touch /etc/caddy/sites/caddy_docker
-    cat >>/etc/caddy/sites/caddy_docker<<-EOF
+    rm /etc/caddy/sites/caddy_docker
+    touch /etc/caddy/sites/caddy_docker
+    cat >/etc/caddy/sites/caddy_docker<<-EOF
 $portainer_url  {
     gzip
     timeouts none
@@ -35,6 +35,7 @@ _install_docker_manager(){
 		echo "----------------------------------------------------------------"
         _backup_docker_manager_config
         _creat_docker_manager_caddy_config
+       
 		break
 	done
 }

