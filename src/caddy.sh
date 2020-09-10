@@ -11,6 +11,7 @@ _creat_default_caddy_config(){
     cat >>/etc/caddy/Caddyfile<<-EOF
 import sites/*
 EOF
+    service caddy start
     service caddy reload
 }
 
@@ -19,6 +20,7 @@ _install_caddy(){
 	_download_caddy_file
 	_install_caddy_service
     _creat_default_caddy_config
+
     
 }
 _uninstall_caddy(){
