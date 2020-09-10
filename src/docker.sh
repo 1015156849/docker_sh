@@ -2,12 +2,19 @@
 clear
 # 开始脚本
 menu_list_docker=(
-    安装Docker
-    卸载Docker
-    查看镜像
-    查看容器
+    安装
+    卸载
 )
-
+_install_docker(){
+    apt-get update
+    curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+    systemctl start docker
+    systemctl enable docker
+}
+_uninstall_docker(){
+    apt-get remove docker docker-engine docker-ce docker.io
+    rm -rf /var/lib/docker
+}
 _menu_install_docker(){
     while :; do
             echo
@@ -27,29 +34,15 @@ _menu_install_docker(){
             done
             echo
             read -p "$(echo -e "(请输入 ${cyan}序号$none)"):" menu
-            [ -z "$menu" ] && menu=1
             case $menu in
-            [1-9] | [1-2][0-9] | 3[0-2])
-                echo
-                echo
-                echo -e "$yellow 功能 = $cyan${menu_list_docker[$menu - 1]}$none"
-                echo "----------------------------------------------------------------"
-                echo
-                ;;
                 1)
                 #安装
+                _install_docker
                 break
                 ;;
                 2)
                 #卸载
-                break
-                ;;
-                3)
-                #查看镜像
-                break
-                ;;
-                4)
-                #查看容器
+                _uninstall_docker
                 break
                 ;;
             *)
