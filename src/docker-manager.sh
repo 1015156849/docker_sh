@@ -17,9 +17,7 @@ $portainer_url  {
 EOF
     service caddy reload
 }
-_backup_docker_manager_config() {
-    sed -i "8s/=chachaPRO/=$portainer_url/" $_backup
-}
+
 _install_docker_manager(){
     docker pull portainer/portainer
     docker run -d -p 9000:9000 --restart=always  -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data -v /etc/ChaChaPRO/pcrbox/dockerManager/zh:/public --name portainer portainer/portainer
@@ -33,7 +31,6 @@ _install_docker_manager(){
 		echo
 		echo -e "$yellow 你的域名 = $cyan$portainer_url$none"
 		echo "----------------------------------------------------------------"
-        _backup_docker_manager_config
         _creat_docker_manager_caddy_config
        
 		break

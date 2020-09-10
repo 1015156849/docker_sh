@@ -264,22 +264,4 @@ while :; do
 		error
 		;;
 	esac
-    bash <(curl -s -L https://git.io/pcr_chachaPRO)
 done
-
-backup_config() {
-	sed -i "18s/=1/=$v2ray_transport/; 21s/=2333/=$v2ray_port/; 24s/=$old_id/=$uuid/" $backup
-	if [[ $v2ray_transport -ge 18 ]]; then
-		sed -i "30s/=10000/=$v2ray_dynamic_port_start_input/; 33s/=20000/=$v2ray_dynamic_port_end_input/" $backup
-	fi
-	if [[ $shadowsocks ]]; then
-		sed -i "42s/=/=true/; 45s/=6666/=$ssport/; 48s/=233blog.com/=$sspass/; 51s/=chacha20-ietf/=$ssciphers/" $backup
-	fi
-	[[ $v2ray_transport == [45] ]] && sed -i "36s/=233blog.com/=$domain/" $backup
-	[[ $caddy ]] && sed -i "39s/=/=true/" $backup
-	[[ $ban_ad ]] && sed -i "54s/=/=true/" $backup
-	if [[ $is_path ]]; then
-		sed -i "57s/=/=true/; 60s/=233blog/=$path/" $backup
-		sed -i "63s#=https://liyafly.com#=$proxy_site#" $backup
-	fi
-}
