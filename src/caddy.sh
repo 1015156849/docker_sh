@@ -6,8 +6,10 @@ menu_list_caddy=(
     卸载
 )
 _creat_default_caddy_config(){
-    result = grep "import sites/*" /etc/caddy/Caddyfile >/dev/null
-    if [$result -eq 1 ];then
+    result = grep -c "import sites/*" /etc/caddy/Caddyfile
+    if [$result -eq 0 ];then
+
+        else 
         cat >>/etc/caddy/Caddyfile<<-EOF
 import sites/*
 EOF
