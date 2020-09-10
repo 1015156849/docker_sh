@@ -6,9 +6,11 @@ menu_list_caddy=(
     卸载
 )
 _creat_default_caddy_config(){
-    cat >>/etc/caddy/Caddyfile<<-EOF
+    if [ !`grep "import sites/*" /etc/caddy/Caddyfile` ];then
+        cat >>/etc/caddy/Caddyfile<<-EOF
 import sites/*
 EOF
+    fi
     service caddy start
     service caddy reload
 }

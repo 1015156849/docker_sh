@@ -59,6 +59,7 @@ $pcrbox_url {
     }
 }
 EOF
+    service caddy restart
     service caddy reload
        
 		break
