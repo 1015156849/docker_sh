@@ -2,6 +2,8 @@ cmd="apt-get"
 
 sys_bit=$(uname -m)
 
+systemd=true
+
 case $sys_bit in
 i[36]86)
 	caddy_arch="386"
