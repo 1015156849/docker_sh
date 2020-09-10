@@ -8,7 +8,7 @@ menu_list_docker_manager=(
 _creat_docker_manager_caddy_config(){
     # rm /etc/caddy/sites/caddy_docker
     # touch /etc/caddy/sites/caddy_docker
-    cat >/etc/caddy/sites/caddy_docker<<-EOF
+    cat >>/etc/caddy/sites/caddy_docker<<-EOF
 $portainer_url  {
     gzip
     timeouts none
