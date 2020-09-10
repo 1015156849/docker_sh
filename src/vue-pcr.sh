@@ -1,6 +1,7 @@
 #!/bin/bash
 # 开始脚本
 menu_list_pcr_box_vue=(
+    一键部署
     更新网站
     仅更新后台
     仅启动后台
@@ -71,25 +72,34 @@ _menu_install_pcr_box_vue(){
                 echo
                 ;;
             1)
+            #一键部署
+            installHtml
+            cleanServer
+            buildServer
+            runServer
+            updateCaddy
+            break
+            ;;
+            2)
             #更新网站
             installHtml
             break
             ;;
-            2)
+            3)
             #仅更新后台
             cleanServer
             buildServer
             updateCaddy
             break
             ;;
-            3)
+            4)
             #仅启动后台
             stopServer
             runServer
             updateCaddy
             break
             ;;
-            4)
+            5)
             #更新并启动后台
             cleanServer
             buildServer
@@ -97,7 +107,7 @@ _menu_install_pcr_box_vue(){
             updateCaddy
             break
             ;;
-            5)
+            6)
             #更新代理配置
             updateCaddy
             break

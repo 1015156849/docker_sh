@@ -117,4 +117,6 @@ _install_caddy_service() {
 
 	## create sites dir
 	mkdir -p /etc/caddy/sites
+	## create www dir
+	mkdir -p /etc/caddy/www
 }
