@@ -40,6 +40,8 @@ _uninstall_docker_manager(){
     docker stop portainer
     docker rm portainer
     docker rmi portainer/portainer
+    rm /etc/caddy/sites/caddy_docker
+    service caddy reload
 }
 _menu_install_docker_manager(){
     while :; do
