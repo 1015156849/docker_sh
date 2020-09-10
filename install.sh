@@ -28,31 +28,6 @@ _dir="/etc/ChaChaPRO/pcrbox/src/"
 
 _backup="/etc/ChaChaPRO/pcrbox/backup.conf"
 
-
-case $sys_bit in
-i[36]86)
-	caddy_arch="386"
-	;;
-'amd64' | x86_64)
-	caddy_arch="amd64"
-	;;
-*armv6*)
-	caddy_arch="arm6"
-	;;
-*armv7*)
-	caddy_arch="arm7"
-	;;
-*aarch64* | *armv8*)
-	caddy_arch="arm64"
-	;;
-*)
-	echo -e " 
-	${red}本脚本${none} 不支持你的系统。 ${yellow}(-_-) ${none}
-	备注: 仅支持 Ubuntu 16+ / Debian 8+ / CentOS 7+ 系统
-	" && exit 1
-	;;
-esac
-
 # 检测方法
 if [[ $(command -v apt-get) || $(command -v yum) ]] && [[ $(command -v systemctl) ]]; then
 
