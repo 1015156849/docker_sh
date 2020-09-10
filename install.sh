@@ -160,6 +160,8 @@ installAll() {
     echo "安装全部"
     echo 
     installBase
+    _load docker-manager.sh
+    _install_docker_manager
 }
 
 uninstallAll() {
@@ -167,6 +169,8 @@ uninstallAll() {
     echo "卸载全部"
     echo 
     uninstallBase
+    _load docker-manager.sh
+    _uninstall_docker_manager
 }
 
 installBase() {
@@ -175,8 +179,8 @@ installBase() {
     echo 
     _load docker.sh
     _install_docker
-    _load docker-manager.sh
-    _install_docker_manager
+    _load caddy.sh
+    _install_caddy
 }
 
 uninstallBase() {
@@ -185,8 +189,8 @@ uninstallBase() {
     echo 
     _load docker.sh
     _uninstall_docker
-    _load docker-manager.sh
-    _uninstall_docker_manager
+    _load caddy.sh
+    _uninstall_caddy
 }
 
 clear
