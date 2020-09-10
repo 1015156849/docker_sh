@@ -1,7 +1,6 @@
 #!/bin/bash
 clear
 # 开始脚本
-caddyservice = "/lib/systemd/system/caddy.service"
 menu_list_caddy=(
     安装
     卸载
@@ -20,7 +19,7 @@ _install_caddy(){
     _load download-caddy.sh
 	_download_caddy_file
 	_install_caddy_service
-    sed -i "16s/=www-data/=root/ 17s/=www-data/=root" $caddyservice
+    sed -i "16s/User=www-data/User=root/; 17s/Group=www-data/Group=root/" "/lib/systemd/system/caddy.service"
     systemctl daemon-reload
     _creat_default_caddy_config
     echo -e "$yellow ..........Caddy代理服务 安装完毕 ..........$none"
