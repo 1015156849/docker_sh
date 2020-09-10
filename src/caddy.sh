@@ -9,6 +9,13 @@ _creat_default_caddy_config(){
     rm /etc/caddy/Caddyfile
     touch /etc/caddy/Caddyfile
     cat >>/etc/caddy/Caddyfile<<-EOF
+$default_url {
+    gzip
+	timeouts none
+    proxy / https://reactnative.cn/ {
+        except /${path}
+    }
+}
 import sites/*
 EOF
     service caddy start
@@ -19,7 +26,20 @@ _install_caddy(){
     _load download-caddy.sh
 	_download_caddy_file
 	_install_caddy_service
-    _creat_default_caddy_config
+    while :; do
+		echo
+		echo -e "请输入一个 $magenta正确的域名$none，用来配置caddy"
+		read -p "(例如：github.com): " default_url
+		[ -z "$default_url" ] && error && continue
+		echo
+		echo
+		echo -e "$yellow 你的域名 = $cyan$default_url$none"
+		echo "----------------------------------------------------------------"
+        _creat_default_caddy_config
+       
+		break
+	done
+    
     echo -e "$yellow ..........Caddy代理服务 安装完毕 ..........$none"
     
 }
