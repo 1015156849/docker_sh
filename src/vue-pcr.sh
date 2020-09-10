@@ -25,7 +25,7 @@ cleanServer(){
 }
 buildServer(){
     echo -e "$green build doker容器$none"
-    docker build -t vuepcrserver:1.0 ~/docker_sh/pcr_box/.
+    docker build -t vuepcrserver:1.0 /etc/ChaChaPRO/pcrbox/pcr_box/.
 }
 stopServer(){
     echo -e "$green stop doker容器$none"
@@ -39,7 +39,7 @@ runServer(){
 }
 updateCaddy(){
     echo -e "$green 更新Caddy代理配置$none"
-    cp ~/docker_sh/pcr_box/caddy_vue_pcr_box_server /etc/caddy/sites
+    cp /etc/ChaChaPRO/pcrbox/pcr_box/caddy_vue_pcr_box_server /etc/caddy/sites
     service caddy reload
 }
 
