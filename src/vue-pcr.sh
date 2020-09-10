@@ -61,16 +61,8 @@ _menu_install_pcr_box_vue(){
                 fi
             done
             echo
-            read -p "$(echo -e "(请输入 ${cyan}序号$none)"):" menu1
-            [ -z "$menu1" ] && menu1=1
-            case $menu1 in
-            [1-9] | [1-2][0-9] | 3[0-2])
-                echo
-                echo
-                echo -e "$yellow 功能 = $cyan${menu_list_pcr_box_vue[$menu1 - 1]}$none"
-                echo "----------------------------------------------------------------"
-                echo
-                ;;
+            read -p "$(echo -e "(请输入 ${cyan}序号$none)"):" menu
+            case $menu in
             1)
             #一键部署
             installHtml
