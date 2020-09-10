@@ -5,8 +5,20 @@ menu_list_docker_manager=(
     安装
     卸载
 )
-_backup_config() {
-    sed -i "8s/=chachaPRO/=$domain/" $_backup
+_creat_docker_manager_caddy_config(){
+    rm /etc/caddy/sites/caddy_docker
+    touch /etc/caddy/sites/caddy_docker
+    cat >/etc/caddy/sites/caddy_docker<<-EOF
+$portainer_url  {
+    gzip
+    timeouts none
+    proxy / 127.0.0.1:9000
+}
+EOF
+    service caddy reload
+}
+_backup_docker_manager_config() {
+    sed -i "8s/=chachaPRO/=$portainer_url/" $_backup
 }
 _install_docker_manager(){
     docker pull portainer/portainer
@@ -15,13 +27,14 @@ _install_docker_manager(){
     while :; do
 		echo
 		echo -e "请输入一个 $magenta正确的域名$none，一定一定一定要正确，不！能！出！错！"
-		read -p "(例如：github.com): " domain
-		[ -z "$domain" ] && error && continue
+		read -p "(例如：github.com): " portainer_url
+		[ -z "$portainer_url" ] && error && continue
 		echo
 		echo
-		echo -e "$yellow 你的域名 = $cyan$domain$none"
+		echo -e "$yellow 你的域名 = $cyan$portainer_url$none"
 		echo "----------------------------------------------------------------"
-        _backup_config
+        _backup_docker_manager_config
+        _creat_docker_manager_caddy_config
 		break
 	done
 }
