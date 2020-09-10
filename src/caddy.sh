@@ -4,13 +4,26 @@ clear
 menu_list_caddy=(
     安装
     卸载
-    启动
-    重启
-    停止
-    查看运行状态
-
 )
+_creat_default_caddy_config(){
+    rm /etc/caddy/Caddyfile
+    touch /etc/caddy/Caddyfile
+    cat >>/etc/caddy/Caddyfile<<-EOF
+import sites/*
+EOF
+    service caddy reload
+}
 
+_install_caddy(){
+    _load download-caddy.sh
+	_download_caddy_file
+	_install_caddy_service
+    _creat_default_caddy_config
+    
+}
+_uninstall_caddy(){
+    apt-get remove caddy
+}
 _menu_install_caddy(){
     while :; do
             echo
@@ -30,14 +43,13 @@ _menu_install_caddy(){
             done
             echo
             read -p "$(echo -e "(请输入 ${cyan}序号$none)"):" menu
-            [ -z "$menu" ] && menu=1
             case $menu in
-            [1-9] | [1-2][0-9] | 3[0-2])
-                echo
-                echo
-                echo -e "$yellow 功能 = $cyan${menu_list_caddy[$menu - 1]}$none"
-                echo "----------------------------------------------------------------"
-                echo
+            1)
+                _install_caddy
+                break
+                ;;
+            2)
+                _uninstall_caddy
                 break
                 ;;
             *)
