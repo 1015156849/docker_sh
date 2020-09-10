@@ -7,7 +7,7 @@ menu_list_caddy=(
 )
 _creat_default_caddy_config(){
     result=$(grep -c "import sites/*" /etc/caddy/Caddyfile)
-    if [$result -eq 0];then
+    if [[ $result -eq 0 ]]; then
         cat >>/etc/caddy/Caddyfile<<-EOF
 import sites/*
 EOF
