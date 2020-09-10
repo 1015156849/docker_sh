@@ -67,6 +67,13 @@ EOF
 	done
    
 }
+_install_pcr_box_vue(){
+    installHtml
+    cleanServer
+    buildServer
+    runServer
+    _creat_pcr_box_vue_caddy_config
+}
 
 _menu_install_pcr_box_vue(){
     while :; do
@@ -90,11 +97,7 @@ _menu_install_pcr_box_vue(){
             case $menu in
             1)
             #一键部署
-            installHtml
-            cleanServer
-            buildServer
-            runServer
-            _creat_pcr_box_vue_caddy_config
+            _install_pcr_box_vue
             break
             ;;
             2)

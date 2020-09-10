@@ -162,6 +162,8 @@ installAll() {
     installBase
     _load docker-manager.sh
     _install_docker_manager
+    _load vue-pcr.sh
+    _install_pcr_box_vue
 }
 
 uninstallAll() {

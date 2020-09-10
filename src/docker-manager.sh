@@ -24,7 +24,7 @@ _install_docker_manager(){
 
     while :; do
 		echo
-		echo -e "请输入一个 $magenta正确的域名$none，一定一定一定要正确，不！能！出！错！"
+		echo -e "请输入一个 $magenta正确的域名$none，来映射到Docker管理网站"
 		read -p "(例如：github.com): " portainer_url
 		[ -z "$portainer_url" ] && error && continue
 		echo
