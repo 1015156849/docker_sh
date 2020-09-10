@@ -182,26 +182,36 @@ customInstall() {
 
 installAll() {
     echo
-    echo "installAll！"
+    echo "安装全部"
     echo 
+    installBase
 }
 
 uninstallAll() {
     echo
-    echo "uninstallAll！"
+    echo "卸载全部"
     echo 
+    uninstallBase
 }
 
 installBase() {
     echo
-    echo "installBase！"
+    echo "安装基础环境"
     echo 
+    _load docker.sh
+    _install_docker
+    _load docker-manager.sh
+    _install_docker_manager
 }
 
 uninstallBase() {
     echo
-    echo "uninstallBase！"
+    echo "卸载基础环境"
     echo 
+    _load docker.sh
+    _uninstall_docker
+    _load docker-manager.sh
+    _uninstall_docker_manager
 }
 
 clear
