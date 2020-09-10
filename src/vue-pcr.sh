@@ -12,7 +12,7 @@ menu_list_pcr_box_vue=(
 installHtml(){
     echo -e "$green 部署HTML$none"
     # chown root:root /etc/caddy/www
-    # mkdir -p /etc/caddy/www/vuepcr
+    mkdir -p /etc/caddy/www/vuepcr
     # cd /etc/caddy/www/vuepcr 
     wget -c https://github.com/1015156849/pcr-guild-vue/releases/download/1.0/dist.zip /etc/caddy/www/vuepcr
     unzip dist.zip
