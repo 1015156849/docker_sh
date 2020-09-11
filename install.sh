@@ -22,7 +22,7 @@ sys_bit=$(uname -m)
 
 _version="v1.0"
 
-_gitbranch="master"
+_gitbranch="dev"
 
 _dir="/etc/ChaChaPRO/pcrbox/src/"
 
