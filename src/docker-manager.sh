@@ -12,7 +12,7 @@ _creat_docker_manager_caddy_config(){
 $portainer_url  {
     gzip
     timeouts none
-    proxy / 127.0.0.1:9000
+    proxy / 127.0.0.1:10260
 }
 EOF
     service caddy reload
@@ -20,7 +20,7 @@ EOF
 
 _install_docker_manager(){
     docker pull portainer/portainer
-    docker run -d -p 9000:9000 --restart=always  -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data -v /etc/ChaChaPRO/pcrbox/dockerManager/zh:/public --name portainer portainer/portainer
+    docker run -d -p 10260:9000 --restart=always  -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data -v /etc/ChaChaPRO/pcrbox/dockerManager/zh:/public --name portainer portainer/portainer
 
     while :; do
 		echo

@@ -33,8 +33,8 @@ stopServer(){
     docker rm vuepcrserver
 }
 runServer(){
-    echo -e "$green run doker容器 8081:80$none"
-    docker run -itd -p 8081:80 --name vuepcrserver vuepcrserver:1.0
+    echo -e "$green run doker容器 10261:80$none"
+    docker run -itd -p 10261:80 --name vuepcrserver vuepcrserver:1.0
         
 }
 
@@ -54,7 +54,7 @@ $pcrbox_url {
     gzip
     root /etc/caddy/www/vuepcr
     index index.html 
-    proxy /api 127.0.0.1:8081 {
+    proxy /api 127.0.0.1:10261 {
         transparent
     }
 }

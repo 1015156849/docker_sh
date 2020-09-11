@@ -148,6 +148,11 @@ customInstall() {
                 _menu_install_pcr_box_vue
                 break
             ;;
+            5)
+                _load yobot.sh
+                _menu_install_yobot
+                break
+            ;;
             *)
                 error
                 ;;
@@ -164,6 +169,8 @@ installAll() {
     _install_docker_manager
     _load vue-pcr.sh
     _install_pcr_box_vue
+    _load yobot.sh
+    _install_yobot
 }
 
 uninstallAll() {

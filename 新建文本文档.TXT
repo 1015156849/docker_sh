@@ -24,7 +24,7 @@ echo "
     - enable: true
       postMessageFormat: string
       reverseHost: yobot
-      reversePort: 9222
+      reversePort: 10263
       reversePath: /ws/
       accessToken: null
       reconnectInterval: 3000
