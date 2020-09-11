@@ -37,7 +37,7 @@ _install_caddy(){
 _uninstall_caddy(){
     service caddy stop
     apt-get remove caddy
-    rm -rf /etc/caddy/
+    # rm -rf /etc/caddy/
     echo -e "$yellow ..........Caddy代理服务 卸载完毕 ..........$none"
 }
 _menu_install_caddy(){
